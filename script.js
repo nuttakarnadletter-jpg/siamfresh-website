@@ -42,6 +42,7 @@ if (shopTrack && shopPrev && shopNext) {
 
   const matchesShopFilter = (card, filter) => {
     if (filter === "all") return true;
+    if (filter === "best") return card.querySelector(".shop-badge")?.textContent.trim() === "Best Seller";
     if (filter === "stock") return Boolean(card.querySelector(".shop-stock"));
     return card.dataset.category === filter;
   };

@@ -669,6 +669,13 @@ h1 span {
   border-radius: 50%;
   background: var(--promo-circle);
   box-shadow: 0 22px 46px rgba(12, 56, 24, 0.2);
+  transform-origin: 18% 18%;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.product-card:hover .product-visual::before {
+  transform: scale(3.55);
+  box-shadow: none;
 }
 
 .product-visual::after {
@@ -807,11 +814,29 @@ h1 span {
   background-image:
     radial-gradient(ellipse at 12% 78%, rgba(209, 255, 142, 0.34) 0%, rgba(209, 255, 142, 0.16) 24%, rgba(209, 255, 142, 0) 54%),
     radial-gradient(ellipse at 86% 18%, rgba(34, 135, 96, 0.16) 0%, rgba(34, 135, 96, 0.08) 26%, rgba(34, 135, 96, 0) 56%),
-    linear-gradient(180deg, #f8fff2 0%, #effaf3 100%),
-    url("assets/bg-element.png");
-  background-position: left bottom, right top, center, calc(100% + 96px) calc(100% + 64px);
+    linear-gradient(180deg, #f8fff2 0%, #effaf3 100%);
+  background-position: left bottom, right top, center;
   background-repeat: no-repeat;
-  background-size: 760px 560px, 700px 520px, cover, min(560px, 44vw) auto;
+  background-size: 760px 560px, 700px 520px, cover;
+}
+
+.shop-products::before {
+  content: "";
+  position: absolute;
+  right: -118px;
+  bottom: -88px;
+  z-index: 0;
+  width: min(620px, 48vw);
+  aspect-ratio: 1680 / 972;
+  background: url("assets/bg-element.png") center / contain no-repeat;
+  opacity: 0.34;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.shop-products > * {
+  position: relative;
+  z-index: 1;
 }
 
 .shop-heading {
@@ -852,7 +877,7 @@ h1 span {
   background: #fff;
   font: inherit;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 600;
   cursor: pointer;
   transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
 }
