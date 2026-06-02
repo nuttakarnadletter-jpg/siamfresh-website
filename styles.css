@@ -355,6 +355,10 @@ h1 span {
   font-weight: 400;
 }
 
+.service-strip article:last-child p {
+  white-space: nowrap;
+}
+
 .section-wrap {
   width: min(100% - 112px, 1180px);
   margin: 0 auto;
@@ -1257,7 +1261,7 @@ h1 span {
 
 .service-strip {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(300px, 1.16fr);
   gap: 20px;
   width: 100%;
   margin: 0;
