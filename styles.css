@@ -1057,7 +1057,7 @@ h1 span {
   gap: 20px;
   align-items: center;
   margin-bottom: 32px;
-  padding: 32px max(38px, calc((100% - 1180px) / 2));
+  padding: 48px max(38px, calc((100% - 1180px) / 2)) 32px;
   border: 0;
   border-radius: 0;
   background: #fff;
@@ -1071,7 +1071,7 @@ h1 span {
   margin-bottom: 10px;
   color: var(--ink);
   font-family: var(--font-main);
-  font-size: clamp(28px, 2.7vw, 36px);
+  font-size: clamp(24px, 2.2vw, 30px);
   font-weight: 700;
   line-height: 1.12;
 }
