@@ -1,0 +1,8 @@
+<svg width="180" height="110" viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="12" y="10" width="156" height="90" rx="22" fill="#F3FAF6" stroke="#228760" stroke-width="4"/>
+  <circle cx="54" cy="55" r="24" fill="#228760"/>
+  <path d="M54 36a20 20 0 1 0 0 40 20 20 0 0 0 0-40Z" stroke="#75E545" stroke-width="4"/>
+  <path d="M34 55h40M54 36c-7 7-10 32 0 40M54 36c7 7 10 32 0 40" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <text x="86" y="47" fill="#0C3818" font-family="Montserrat, Arial, sans-serif" font-size="18" font-weight="800">GLOBAL</text>
+  <text x="86" y="67" fill="#0C3818" font-family="Montserrat, Arial, sans-serif" font-size="18" font-weight="800">G.A.P.</text>
+</svg>
