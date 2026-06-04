@@ -1460,7 +1460,7 @@ h1 span {
 .footer-bottom p {
   margin: 0;
   color: rgba(255, 255, 255, 0.82);
-  font-family: var(--font-support);
+  font-family: var(--font-thai);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.75;
@@ -1500,14 +1500,16 @@ h1 span {
 .footer-contact h2 {
   margin: 0 0 8px;
   color: #fff;
+  font-family: var(--font-main);
   font-size: 18px;
+  font-weight: 700;
   line-height: 1.2;
 }
 
 .footer-links a,
 .footer-contact a {
   color: rgba(255, 255, 255, 0.82);
-  font-family: var(--font-support);
+  font-family: var(--font-main);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.4;
@@ -1532,7 +1534,7 @@ h1 span {
 
 .footer-bottom a {
   color: rgba(255, 255, 255, 0.88);
-  font-family: var(--font-support);
+  font-family: var(--font-main);
   font-size: 14px;
   font-weight: 400;
 }
