@@ -1,3 +1,128 @@
+const ACCESS_PASSWORD = "rp-siamfresh";
+const ACCESS_KEY = "siamfresh-design-access";
+
+const buildLoginGate = () => {
+  const login = document.createElement("section");
+  login.className = "design-login";
+  login.setAttribute("aria-label", "Design access login");
+  login.innerHTML = `
+    <div class="design-login-card">
+      <img src="assets/logo2.svg" alt="Siam Fresh" />
+      <h2>เข้าสู่หน้า Preview</h2>
+      <p>กรอกรหัสเข้าชมเพื่อดูดีไซน์ Siam Fresh</p>
+      <form class="design-login-form">
+        <input type="password" name="password" placeholder="รหัสเข้าชม" autocomplete="current-password" aria-label="รหัสเข้าชม" />
+        <button type="submit">เข้าสู่หน้าออกแบบ</button>
+        <span class="design-login-error" aria-live="polite"></span>
+      </form>
+    </div>
+  `;
+
+  document.body.appendChild(login);
+
+  const form = login.querySelector("form");
+  const input = login.querySelector("input");
+  const error = login.querySelector(".design-login-error");
+
+  const unlock = () => {
+    sessionStorage.setItem(ACCESS_KEY, "true");
+    document.body.classList.remove("auth-pending");
+    login.hidden = true;
+  };
+
+  if (sessionStorage.getItem(ACCESS_KEY) === "true") {
+    unlock();
+    return;
+  }
+
+  window.setTimeout(() => input.focus(), 0);
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (input.value.trim() === ACCESS_PASSWORD) {
+      unlock();
+      return;
+    }
+
+    error.textContent = "รหัสไม่ถูกต้อง กรุณาลองอีกครั้ง";
+    input.select();
+  });
+};
+
+const buildDesignSwitcher = () => {
+  const path = window.location.pathname;
+  const isRevise = path.endsWith("revise.html");
+  const switcher = document.createElement("nav");
+  switcher.className = "design-switcher";
+  switcher.setAttribute("aria-label", "Design version switcher");
+  switcher.innerHTML = `
+    <a href="index.html"${isRevise ? "" : ' class="is-active"'}>แบบแรก</a>
+    <a href="revise.html"${isRevise ? ' class="is-active"' : ""}>Revise</a>
+  `;
+  document.body.appendChild(switcher);
+};
+
+if (document.body.dataset.auth === "off") {
+  document.body.classList.remove("auth-pending");
+} else {
+  buildLoginGate();
+}
+buildDesignSwitcher();
+
+const reviseHeroSlides = document.querySelectorAll(".revise-hero-media img");
+const reviseHeroButtons = document.querySelectorAll(".revise-hero-controls button");
+const reviseHeroPrev = document.querySelector(".revise-hero-prev");
+const reviseHeroNext = document.querySelector(".revise-hero-next");
+const reviseHero = document.querySelector(".revise-hero");
+
+if (reviseHeroSlides.length && reviseHeroButtons.length) {
+  let currentHeroSlide = 0;
+
+  const showHeroSlide = (index) => {
+    currentHeroSlide = (index + reviseHeroSlides.length) % reviseHeroSlides.length;
+
+    reviseHeroSlides.forEach((slide, slideIndex) => {
+      slide.classList.toggle("is-active", slideIndex === currentHeroSlide);
+    });
+
+    reviseHeroButtons.forEach((button, buttonIndex) => {
+      button.classList.toggle("is-active", buttonIndex === currentHeroSlide);
+    });
+
+    if (reviseHero) {
+      reviseHero.dataset.overlay = reviseHeroSlides[currentHeroSlide].dataset.overlay || "fruits";
+    }
+  };
+
+  reviseHeroButtons.forEach((button, index) => {
+    button.addEventListener("click", () => showHeroSlide(index));
+  });
+
+  reviseHeroPrev?.addEventListener("click", () => showHeroSlide(currentHeroSlide - 1));
+  reviseHeroNext?.addEventListener("click", () => showHeroSlide(currentHeroSlide + 1));
+
+  window.setInterval(() => {
+    showHeroSlide(currentHeroSlide + 1);
+  }, 6500);
+}
+
+const newsTrack = document.querySelector(".news-track");
+const newsPrev = document.querySelector(".news-prev");
+const newsNext = document.querySelector(".news-next");
+
+if (newsTrack && newsPrev && newsNext) {
+  const scrollNews = (direction) => {
+    const firstCard = newsTrack.querySelector("article");
+    const gap = parseFloat(getComputedStyle(newsTrack).columnGap) || 22;
+    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width + gap : newsTrack.clientWidth;
+    newsTrack.scrollBy({ left: direction * cardWidth, behavior: "smooth" });
+  };
+
+  newsPrev.addEventListener("click", () => scrollNews(-1));
+  newsNext.addEventListener("click", () => scrollNews(1));
+}
+
 const storySection = document.querySelector(".story");
 
 if (storySection) {

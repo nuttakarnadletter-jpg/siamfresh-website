@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Thailand flag">
+  <defs>
+    <clipPath id="circle">
+      <circle cx="24" cy="24" r="24"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#circle)">
+    <rect width="48" height="48" fill="#fff"/>
+    <rect width="48" height="7.2" y="0" fill="#d91f35"/>
+    <rect width="48" height="7.2" y="40.8" fill="#d91f35"/>
+    <rect width="48" height="7.2" y="7.2" fill="#fff"/>
+    <rect width="48" height="7.2" y="33.6" fill="#fff"/>
+    <rect width="48" height="19.2" y="14.4" fill="#252f6c"/>
+  </g>
+</svg>
