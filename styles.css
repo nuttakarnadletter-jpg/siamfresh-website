@@ -2236,12 +2236,15 @@ h1 span {
 .revise-product-grid .product-card-link::after {
   content: "";
   position: absolute;
-  top: var(--product-bar-height);
-  right: 0;
-  left: 0;
+  top: calc(var(--product-bar-height) + 12px);
+  right: 16px;
+  left: 16px;
   z-index: 1;
-  height: 260px;
-  background: linear-gradient(180deg, rgba(12, 56, 24, 0) 42%, rgba(12, 56, 24, 0.2) 70%, rgba(34, 135, 96, 0.38) 100%);
+  height: 232px;
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at 94% 96%, rgba(117, 229, 69, 0.46) 0%, rgba(117, 229, 69, 0.28) 14%, rgba(117, 229, 69, 0) 34%),
+    linear-gradient(180deg, rgba(12, 56, 24, 0) 48%, rgba(12, 56, 24, 0.18) 74%, rgba(12, 56, 24, 0.34) 100%);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.24s ease, top 0.24s ease;
@@ -2640,6 +2643,38 @@ h1 span {
   font-family: var(--font-main);
   font-size: 14px;
   line-height: 1.7;
+}
+
+.revise-footer .footer-social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.revise-footer .footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  color: var(--green-2);
+  background: transparent;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.revise-footer .footer-social a:hover,
+.revise-footer .footer-social a:focus-visible {
+  opacity: 0.86;
+  transform: translateY(-2px);
+}
+
+.revise-footer .footer-social img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
 .revise-footer .footer-links,
