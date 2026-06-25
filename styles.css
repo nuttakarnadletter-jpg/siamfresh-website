@@ -299,6 +299,93 @@ a {
   font-size: 13px;
 }
 
+.design-home {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(117, 229, 69, 0.2), transparent 28rem),
+    radial-gradient(circle at 84% 76%, rgba(34, 135, 96, 0.2), transparent 32rem),
+    linear-gradient(180deg, #fbfff8 0%, #eef8ef 100%);
+}
+
+.design-home-card {
+  width: min(100%, 720px);
+  padding: 36px;
+  border: 1px solid rgba(34, 135, 96, 0.14);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 24px 58px rgba(12, 56, 24, 0.16);
+}
+
+.design-home-card > img {
+  width: 118px;
+  margin-bottom: 22px;
+}
+
+.design-home-kicker {
+  margin: 0 0 8px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.design-home-card h2 {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 4vw, 38px);
+  line-height: 1.1;
+}
+
+.design-home-card p {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-family: var(--font-thai);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.design-home-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.design-home-links a {
+  display: flex;
+  min-height: 132px;
+  padding: 20px;
+  border: 1px solid rgba(34, 135, 96, 0.16);
+  border-radius: 14px;
+  background: #fbfff8;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.design-home-links a:hover,
+.design-home-links a:focus-visible {
+  border-color: rgba(34, 135, 96, 0.42);
+  box-shadow: 0 14px 34px rgba(12, 56, 24, 0.12);
+  transform: translateY(-3px);
+}
+
+.design-home-links strong {
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.design-home-links span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 .hero {
   position: relative;
   display: flex;
@@ -3163,5 +3250,19 @@ h1 span {
 
   .shop-track {
     grid-auto-columns: 84%;
+  }
+}
+
+@media (max-width: 680px) {
+  .design-home-card {
+    padding: 28px;
+  }
+
+  .design-home-links {
+    grid-template-columns: 1fr;
+  }
+
+  .design-home-links a {
+    min-height: 108px;
   }
 }

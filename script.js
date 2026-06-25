@@ -1,6 +1,54 @@
 const ACCESS_PASSWORD = "rp-siamfresh";
 const ACCESS_KEY = "siamfresh-design-access";
 
+const designEntryLinks = [
+  {
+    title: "แบบแรก",
+    text: "Original homepage direction",
+    href: "index.html",
+  },
+  {
+    title: "Revise",
+    text: "Corporate export homepage",
+    href: "revise.html",
+  },
+  {
+    title: "Revise V2",
+    text: "Second revision workspace",
+    href: "revise-v2.html",
+  },
+];
+
+const buildDesignHome = () => {
+  document.querySelector(".design-home")?.remove();
+
+  const home = document.createElement("section");
+  home.className = "design-home";
+  home.setAttribute("aria-label", "Choose design entrance");
+  home.innerHTML = `
+    <div class="design-home-card">
+      <img src="assets/logo2.svg" alt="Siam Fresh" />
+      <p class="design-home-kicker">Preview Home</p>
+      <h2>เลือกทางเข้าที่ต้องการ</h2>
+      <p>เข้าสู่หน้าดีไซน์ที่ต้องการแก้ไขหรือพรีวิวต่อ</p>
+      <div class="design-home-links">
+        ${designEntryLinks
+          .map(
+            (link) => `
+              <a href="${link.href}">
+                <strong>${link.title}</strong>
+                <span>${link.text}</span>
+              </a>
+            `,
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(home);
+};
+
 const buildLoginGate = () => {
   const login = document.createElement("section");
   login.className = "design-login";
@@ -24,10 +72,14 @@ const buildLoginGate = () => {
   const input = login.querySelector("input");
   const error = login.querySelector(".design-login-error");
 
-  const unlock = () => {
+  const unlock = (showHome = false) => {
     sessionStorage.setItem(ACCESS_KEY, "true");
     document.body.classList.remove("auth-pending");
     login.hidden = true;
+
+    if (showHome) {
+      buildDesignHome();
+    }
   };
 
   if (sessionStorage.getItem(ACCESS_KEY) === "true") {
@@ -41,7 +93,7 @@ const buildLoginGate = () => {
     event.preventDefault();
 
     if (input.value.trim() === ACCESS_PASSWORD) {
-      unlock();
+      unlock(true);
       return;
     }
 
@@ -53,12 +105,15 @@ const buildLoginGate = () => {
 const buildDesignSwitcher = () => {
   const path = window.location.pathname;
   const isRevise = path.endsWith("revise.html");
+  const isReviseV2 = path.endsWith("revise-v2.html");
+  const isIndex = !isRevise && !isReviseV2;
   const switcher = document.createElement("nav");
   switcher.className = "design-switcher";
   switcher.setAttribute("aria-label", "Design version switcher");
   switcher.innerHTML = `
-    <a href="index.html"${isRevise ? "" : ' class="is-active"'}>แบบแรก</a>
+    <a href="index.html"${isIndex ? ' class="is-active"' : ""}>แบบแรก</a>
     <a href="revise.html"${isRevise ? ' class="is-active"' : ""}>Revise</a>
+    <a href="revise-v2.html"${isReviseV2 ? ' class="is-active"' : ""}>Revise V2</a>
   `;
   document.body.appendChild(switcher);
 };
