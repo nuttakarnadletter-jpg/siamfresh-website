@@ -1965,8 +1965,8 @@ h1 span {
 }
 
 .revise-hero-media img.hero-fruits-zoom {
-  object-position: 58% center;
-  transform: scale(1);
+  object-position: 68% center;
+  transform: scale(1.07);
   transform-origin: center center;
 }
 
@@ -3331,6 +3331,11 @@ h1 span {
   line-height: 1.7;
 }
 
+.revise-footer .footer-brand p {
+  max-width: none;
+  white-space: nowrap;
+}
+
 .revise-footer .footer-social {
   display: flex;
   align-items: center;
@@ -3968,6 +3973,10 @@ h1 span {
   .revise-footer .footer-inner {
     gap: 34px;
     padding-bottom: 36px;
+  }
+
+  .revise-footer .footer-brand p {
+    white-space: normal;
   }
 
   .revise-footer .footer-bottom {
