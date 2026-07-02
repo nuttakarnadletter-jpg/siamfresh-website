@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-WebMax Brochure — Readyplanet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #0066FF;
+      --delft: #1D3355;
+      --delft-dark: #16263F;
+      --teal: #11E3E3;
+      --azure: #EFFEFE;
+      --indigo: #7700FF;
+      --green: #33B555;
+      --orange: #FF771F;
+      --g900: #3A4044;
+      --g700: #71777C;
+      --g600: #94999D;
+      --g400: #EBEBEB;
+      --g200: #F8F8F8;
+      --white: #FFFFFF;
+      --display: 'Poppins', sans-serif;
+      --thai: 'Noto Sans Thai', sans-serif;
+      --r-sm: 8px;
+      --r-md: 12px;
+      --r-lg: 16px;
+      --r-pill: 100px;
+      --shadow: 0 8px 32px rgba(29, 51, 85, 0.12);
+    }
+
+    html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+    body {
+      font-family: var(--thai);
+      color: var(--g900);
+      line-height: 1.55;
+      background: #5b6470;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      overflow: hidden;
+      position: relative;
+      margin: 0 auto 28px;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.32);
+    }
+
+    @page { size: A4; margin: 0; }
+
+    @media print {
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { background: #fff; }
+      .page { margin: 0 !important; box-shadow: none !important; break-after: page; }
+      .page:last-child { break-after: auto; }
+    }
+
+    /* ── Shared ── */
+    .label {
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .page-footer {
+      position: absolute;
+      left: 16mm;
+      right: 16mm;
+      bottom: 9mm;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid var(--g400);
+      font-family: var(--display);
+      font-size: 10px;
+      color: var(--g600);
+    }
+
+    .page-footer--light {
+      border-top-color: rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .brand-mark svg { width: 18px; height: 18px; }
+
+    .brand-mark span {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 11px;
+    }
+
+    .check { color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+    /* ── PAGE 1 ── */
+    .page-cover {
+      background: radial-gradient(120% 80% at 85% 8%, #25406b 0%, var(--delft) 42%, var(--delft-dark) 100%);
+      color: var(--white);
+      padding: 14mm 16mm 12mm;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cover-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cover-logo { width: 140px; height: auto; }
+
+    .cover-badge {
+      font-family: var(--display);
+      font-size: 9.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .cover-hero { margin-top: 10mm; }
+
+    .cover-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 13px;
+      border: 1px solid rgba(17, 227, 227, 0.45);
+      border-radius: var(--r-pill);
+      font-family: var(--display);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .cover-pill::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .cover-title {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 68px;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-top: 14px;
+    }
+
+    .cover-title .ai { color: var(--teal); }
+
+    .cover-headline {
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 1.3;
+      margin-top: 12px;
+      max-width: 420px;
+    }
+
+    .cover-headline em {
+      font-style: normal;
+      color: var(--teal);
+    }
+
+    .cover-sub {
+      font-size: 14.5px;
+      color: rgba(255, 255, 255, 0.78);
+      margin-top: 10px;
+      max-width: 440px;
+    }
+
+    .cover-sub strong { color: #fff; font-weight: 600; }
+
+    .cover-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+      padding: 10px 20px;
+      background: var(--blue);
+      border-radius: var(--r-pill);
+      box-shadow: 0 8px 24px rgba(0, 102, 255, 0.4);
+    }
+
+    .cover-cta span:first-child { font-weight: 700; font-size: 14px; }
+
+    .cover-cta .sep {
+      width: 1px;
+      height: 14px;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .cover-cta .phone {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .cover-body { flex: 1; display: flex; flex-direction: column; margin-top: 8mm; }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .section-head h2 {
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+    }
+
+    .section-head .line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .section-head .note {
+      font-family: var(--display);
+      font-size: 9.5px;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .benefit {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--r-md);
+      padding: 12px 13px;
+      border-top: 2px solid var(--teal);
+    }
+
+    .benefit-num {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .benefit h3 {
+      font-weight: 700;
+      font-size: 13px;
+      margin-top: 3px;
+      color: #fff;
+    }
+
+    .benefit p {
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, 0.72);
+      margin-top: 4px;
+      line-height: 1.45;
+    }
+
+    .benefit ul {
+      list-style: none;
+      margin-top: 7px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .benefit li {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.85);
+      display: flex;
+      gap: 5px;
+    }
+
+    .benefit li::before {
+      content: '—';
+      color: var(--teal);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .pillar {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: var(--r-md);
+      padding: 11px 13px;
+    }
+
+    .pillar-tag {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 10.5px;
+      padding: 2px 9px;
+      border-radius: 5px;
+    }
+
+    .pillar p {
+      font-size: 10.5px;
+      color: var(--g700);
+      margin-top: 7px;
+      line-height: 1.45;
+    }
+
+    .cover-intro {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 12px;
+      max-width: 680px;
+      line-height: 1.6;
+    }
+
+    /* ── PAGE 2 ── */
+    .page-inner {
+      background: #fff;
+      padding: 14mm 16mm 12mm;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .page-header {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 4mm;
+    }
+
+    .page-num {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 52px;
+      line-height: 0.8;
+      color: var(--g400);
+    }
+
+    .page-header h2 {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 1.3;
+      margin-top: 2px;
+    }
+
+    .page-header h2 em {
+      font-style: normal;
+      color: var(--blue);
+    }
+
+    .page-desc {
+      font-size: 12.5px;
+      color: var(--g700);
+      margin-top: 8px;
+      max-width: 600px;
+    }
+
+    /* Pricing */
+    .pricing {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .plan {
+      border: 1px solid var(--g400);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .plan--featured {
+      border: 2px solid var(--blue);
+      box-shadow: 0 12px 36px rgba(0, 102, 255, 0.18);
+    }
+
+    .plan--dark {
+      background: var(--delft);
+      border-color: var(--delft);
+      color: #fff;
+    }
+
+    .plan-popular {
+      background: var(--orange);
+      text-align: center;
+      padding: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .plan-head {
+      padding: 12px 14px 10px;
+    }
+
+    .plan-head--azure { background: var(--azure); border-bottom: 1px solid #d7f4f4; }
+    .plan-head--blue { background: var(--blue); }
+    .plan-head--dark { border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+
+    .plan-name {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .plan-head--blue .plan-name,
+    .plan-head--dark .plan-name { color: #fff; }
+
+    .plan-desc {
+      font-size: 10px;
+      color: var(--g700);
+      margin-top: 4px;
+      line-height: 1.4;
+      min-height: 38px;
+    }
+
+    .plan-head--blue .plan-desc { color: rgba(255, 255, 255, 0.85); }
+    .plan-head--dark .plan-desc { color: rgba(255, 255, 255, 0.7); }
+
+    .plan-body { padding: 11px 14px; }
+
+    .plan-price {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .plan-price strong {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    .plan--featured .plan-price strong { color: var(--blue); }
+    .plan--dark .plan-price strong { color: var(--teal); font-size: 18px; }
+
+    .plan-price span { font-size: 10.5px; color: var(--g700); }
+    .plan--dark .plan-price span { color: rgba(255, 255, 255, 0.6); }
+
+    .plan-renew {
+      font-size: 10px;
+      color: var(--g600);
+      margin-top: 2px;
+    }
+
+    .plan--dark .plan-renew { color: rgba(255, 255, 255, 0.55); }
+
+    .plan-divider {
+      height: 1px;
+      background: var(--g400);
+      margin: 10px 0;
+    }
+
+    .plan--dark .plan-divider { background: rgba(255, 255, 255, 0.14); }
+
+    .plan ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .plan li {
+      display: flex;
+      gap: 6px;
+      font-size: 10.5px;
+      line-height: 1.4;
+    }
+
+    .plan--dark li { color: rgba(255, 255, 255, 0.92); }
+
+    .plan-note {
+      font-size: 10px;
+      color: var(--g600);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* Mid section: clients + capabilities */
+    .mid-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 12px;
+      margin-top: 14px;
+      flex: 1;
+    }
+
+    .clients h3,
+    .caps h3 {
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .client-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .client {
+      background: var(--g200);
+      border-radius: var(--r-sm);
+      padding: 7px 9px;
+    }
+
+    .client strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .client span {
+      font-size: 9px;
+      color: var(--g600);
+    }
+
+    .cap-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+
+    .cap-label {
+      width: 100%;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--g900);
+      margin-bottom: 2px;
+    }
+
+    .tag {
+      font-size: 9.5px;
+      color: var(--g900);
+      background: var(--g200);
+      border-radius: var(--r-pill);
+      padding: 2px 8px;
+    }
+
+    .tag--ai {
+      background: var(--indigo);
+      color: #fff;
+    }
+
+    /* Trust + CTA */
+    .trust {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .stat {
+      text-align: center;
+      background: var(--g200);
+      border-radius: var(--r-sm);
+      padding: 10px 6px;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 22px;
+      color: var(--blue);
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      font-size: 10px;
+      color: var(--g700);
+      margin-top: 4px;
+    }
+
+    .cta-band {
+      margin-top: 12px;
+      background: linear-gradient(120deg, var(--delft) 0%, #234072 100%);
+      border-radius: var(--r-lg);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: #fff;
+    }
+
+    .cta-band h3 {
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
+    .cta-band p {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 4px;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      padding: 9px 18px;
+      background: var(--blue);
+      border-radius: var(--r-pill);
+      font-weight: 700;
+      font-size: 13px;
+      color: #fff;
+    }
+
+    .cta-phone {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    .cta-url {
+      font-family: var(--display);
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .qr-box {
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .qr {
+      width: 72px;
+      height: 72px;
+      background: #fff;
+      border-radius: var(--r-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-inner {
+      width: 48px;
+      height: 48px;
+      border-radius: 4px;
+      background: repeating-conic-gradient(var(--delft) 0% 25%, #fff 0% 50%) 50% / 12px 12px;
+      border: 2px solid var(--delft);
+    }
+
+    .qr-label {
+      font-family: var(--display);
+      font-size: 8.5px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.75);
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════ PAGE 1 — Cover + Overview ═══════════════ -->
+  <section class="page page-cover">
+    <div class="cover-top">
+      <svg class="cover-logo" viewBox="0 0 1835 525" aria-label="Readyplanet" role="img">
+        <path d="M553.12,209.32v17.75H510.26c-11.69,0-16.67,5.41-16.67,16.88v78.36h-18.4V241.57c0-22.07,8.23-32.25,30.31-32.25Z" fill="#fff"/>
+        <path d="M638.18,209.32c26.84,0,38.09,12.77,38.09,34.2,0,20.78-10.39,32.25-38.31,32.25H578.65v8.88c0,11.47,6.28,19.91,22.08,19.91h69.91v17.75H600.73c-28.57,0-39.82-15.8-39.82-37.23V246.55c0-21.21,11.25-37.23,39.82-37.23Zm-59.53,51.73h58.88c15.15,0,20.78-6.06,20.78-16.45,0-10.82-6.06-17.53-20.35-17.53H600.73c-15.8,0-22.08,8.44-22.08,19.7Z" fill="#fff"/>
+        <path d="M765.23,209.32c28.57,0,39.83,16,39.83,37.23v55c0,14.72-4.33,20.78-21.43,20.78H727.35c-26.62,0-37.66-12.77-37.66-33.77,0-20.34,10.17-32,37.88-32h59.52v-9.74c0-11.26-6.28-19.7-22.08-19.7H696.62V209.32Zm21.86,88.31v-26.4H728c-14.93,0-20.34,6.06-20.34,16.23,0,10.61,5.84,17.1,19.91,17.1h52.16C785.14,304.56,787.09,302.39,787.09,297.63Z" fill="#fff"/>
+        <path d="M942.93,158.46V273.82c0,32.69-14.71,48.49-42,48.49h-31.6c-30.52,0-49.57-18.4-49.57-56.5s19.05-56.49,49.57-56.49h55.2V158.46ZM924.54,273.17v-46.1H870.86c-21.65,0-32.47,11.91-32.47,39,0,26.84,10.82,38.53,32.47,38.53h24.89C915.88,304.56,924.54,295,924.54,273.17Z" fill="#fff"/>
+        <path d="M1159.16,209.32c30.31,0,49.35,18.4,49.35,56.49s-19,56.5-49.35,56.5H1104v45.88h-18.4V257.81c0-32.69,14.5-48.49,42-48.49ZM1104,304.56h53.46c21.86,0,32.69-11.69,32.69-38.75,0-26.83-10.83-38.74-32.69-38.74h-24.89c-20.13,0-28.57,9.53-28.57,31.39Z" fill="#fff"/>
+        <path d="M1242.06,158.46V322.31h-18.4V158.46Z" fill="#fff"/>
+        <path d="M1335.56,209.32c28.57,0,39.83,16,39.83,37.23v55c0,14.72-4.33,20.78-21.43,20.78h-56.27c-26.63,0-37.67-12.77-37.67-33.77,0-20.34,10.18-32,37.88-32h59.53v-9.74c0-11.26-6.28-19.7-22.08-19.7H1267V209.32Zm21.87,88.31v-26.4h-59.1c-14.93,0-20.34,6.06-20.34,16.23,0,10.61,5.84,17.1,19.91,17.1h52.17C1355.48,304.56,1357.43,302.39,1357.43,297.63Z" fill="#fff"/>
+        <path d="M1458.72,209.32c38.75,0,57.58,18.18,57.58,49.57v63.42h-18.4V258.89c0-20.56-11.91-31.82-39.18-31.82h-42.2c-1.74,0-2.6,1.08-2.6,3v92.21h-18.4V224.47c0-11.25,3.9-15.15,13.64-15.15Z" fill="#fff"/>
+        <path d="M1611.1,209.32c26.84,0,38.09,12.77,38.09,34.2,0,20.78-10.39,32.25-38.31,32.25h-59.3v8.88c0,11.47,6.27,19.91,22.07,19.91h69.92v17.75h-69.92c-28.57,0-39.82-15.8-39.82-37.23V246.55c0-21.21,11.25-37.23,39.82-37.23Zm-59.52,51.73h58.87c15.15,0,20.78-6.06,20.78-16.45,0-10.82-6.06-17.53-20.35-17.53h-37.23c-15.8,0-22.07,8.44-22.07,19.7Z" fill="#fff"/>
+        <path d="M1046.22,208.74V301c0,1.94-.86,3-2.59,3h-22.79c-27.06,0-39-11.09-39.17-31.35,0-.15,0-.31,0-.47V208.74h-18.4v63.42c0,8.93,1.53,16.79,4.61,23.47a37.34,37.34,0,0,0,2.85,5.16c7.07,10.89,19.23,17.83,36.62,20.11h39.4v9.39c0,11.48-6.27,19.91-22.07,19.91h-61.3V368h61.3c28.57,0,39.82-15.8,39.82-37.22V309.8c.09-1,.13-2.07.13-3.23V208.74Z" fill="#fff"/>
+        <path d="M1669.11,209.32V182.7h18.39v26.62h33.77v17.75H1687.5v58.66c0,14.93,5.2,19.69,17.75,19.69h15.59v16.89h-19.27c-22.72,0-32.46-9.09-32.46-37.66V227.07h-15.59V209.32Z" fill="#fff"/>
+        <path d="M265,114.55A148.78,148.78,0,1,0,413.73,263.33,148.78,148.78,0,0,0,265,114.55Zm35,108.81a26.35,26.35,0,0,1-3.72,14,23.34,23.34,0,0,1-9.9,9.24l-3.19,1.57,1.93,4.25,13,30H284.79l-14.52-33.5H185.89v33.5H174v-44l102.8.28a10.39,10.39,0,0,0,7.93-3.63,12.87,12.87,0,0,0,3.3-8.83v-16a12.72,12.72,0,0,0-3.3-8.72,10.52,10.52,0,0,0-7.93-3.64l-102.8.11V187.61H276.8a21.13,21.13,0,0,1,16.34,7.45,25.71,25.71,0,0,1,6.78,18.09ZM318.66,339a9.62,9.62,0,1,1,9.6-9.66A9.62,9.62,0,0,1,318.66,339Zm0-27a9.44,9.44,0,0,1-9.57-9.56,9.59,9.59,0,1,1,9.57,9.56Zm27.68,27a9.62,9.62,0,1,1,9.56-9.66A9.66,9.66,0,0,1,346.34,339Zm0-27a9.49,9.49,0,0,1-9.57-9.56,9.57,9.57,0,0,1,19.13,0A9.48,9.48,0,0,1,346.34,312Z" fill="#fff"/>
+      </svg>
+      <span class="cover-badge">Enterprise Website Platform</span>
+    </div>
+
+    <div class="cover-hero">
+      <div class="cover-pill">All-in-One Website Service</div>
+      <h1 class="cover-title"><span class="ai">AI</span>-WebMax</h1>
+      <p class="cover-headline">ยกระดับธุรกิจสู่<em>เว็บไซต์ยุค AI</em></p>
+      <p class="cover-sub">เว็บไซต์ธุรกิจ · ขายของออนไลน์ · ทำการตลาด <strong>จบในบริการเดียว</strong></p>
+      <div class="cover-cta">
+        <span>ขอคำปรึกษาฟรี</span>
+        <span class="sep"></span>
+        <span class="phone">02-016-6789</span>
+      </div>
+    </div>
+
+    <div class="cover-body">
+      <p class="cover-intro">
+        AI-WebMax คือบริการเว็บไซต์ครบวงจร — เว็บไซต์ระดับมืออาชีพ ระบบร้านค้าออนไลน์ที่โหลดเร็วและปลอดภัย พร้อมเครื่องมือ AI ตอบลูกค้า 24 ชั่วโมง เพื่อเพิ่มโอกาสขายและลดภาระงานซ้ำ ๆ
+      </p>
+
+      <div class="section-head">
+        <h2>3 ผลลัพธ์ที่ธุรกิจได้รับ</h2>
+        <span class="line"></span>
+        <span class="note">Why AI-WebMax</span>
+      </div>
+
+      <div class="benefits">
+        <article class="benefit">
+          <div class="benefit-num">01</div>
+          <h3>Corporate Image</h3>
+          <p>เสริมภาพลักษณ์องค์กรด้วยเว็บไซต์ทันสมัย สอดคล้องกับตัวตนแบรนด์</p>
+          <ul>
+            <li>Corporate Identity ชัดเจน</li>
+            <li>Responsive ทุกอุปกรณ์</li>
+            <li>รองรับหลายภาษา</li>
+          </ul>
+        </article>
+        <article class="benefit">
+          <div class="benefit-num">02</div>
+          <h3>Sales &amp; E-Commerce</h3>
+          <p>เพิ่มยอดขายด้วยระบบร้านค้าออนไลน์ที่เสถียร โหลดเร็ว และปลอดภัย</p>
+          <ul>
+            <li>จัดการสินค้า/ออเดอร์ง่าย</li>
+            <li>ชำระเงินหลายช่องทาง</li>
+            <li>รองรับ B2B และ B2C</li>
+          </ul>
+        </article>
+        <article class="benefit">
+          <div class="benefit-num">03</div>
+          <h3>Lead Generation</h3>
+          <p>เปลี่ยนผู้เข้าชมเว็บไซต์ให้เป็นลูกค้า ด้วย SEO และ CRM</p>
+          <ul>
+            <li>Landing Page เน้น Conversion</li>
+            <li>เชื่อมต่อ CRM อัตโนมัติ</li>
+            <li>เก็บ Lead ให้ทีมขาย</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="section-head">
+        <h2>สิ่งที่รวมอยู่ในบริการ</h2>
+        <span class="line"></span>
+        <span class="note">4 Core Pillars</span>
+      </div>
+
+      <div class="pillars">
+        <article class="pillar">
+          <span class="pillar-tag">Smart Design</span>
+          <p>ออกแบบโดยทีมมืออาชีพ ตรงกับ Corporate Identity พร้อมใช้งานจริง ~45 วันทำการ พร้อมคอร์สอบรม</p>
+        </article>
+        <article class="pillar">
+          <span class="pillar-tag">R-Commerce</span>
+          <p>แพลตฟอร์มร้านค้าเน้นความเร็วและความปลอดภัย ไม่ใช้ Open Source รองรับ B2B/B2C และ AI SEO</p>
+        </article>
+        <article class="pillar">
+          <span class="pillar-tag">AI-Powered Website</span>
+          <p>R-Chatbot ตอบลูกค้า 24 ชม. รองรับ LINE OA, Facebook, R-Widget และ Generative AI Search</p>
+        </article>
+        <article class="pillar">
+          <span class="pillar-tag">Enterprise-Ready</span>
+          <p>Lightning Technology, High Security, Multi-Language, Payment Gateway, Promotion และ Loyalty Program</p>
+        </article>
+      </div>
+    </div>
+
+    <footer class="page-footer page-footer--light">
+      <span>www.readyplanet.com/ai-webmax</span>
+      <span>โบรชัวร์บริการ · 2025</span>
+    </footer>
+  </section>
+
+  <!-- ═══════════════ PAGE 2 — Packages + Proof + CTA ═══════════════ -->
+  <section class="page">
+    <div class="page-inner">
+      <header class="page-header">
+        <div class="page-num">02</div>
+        <div>
+          <div class="label">Packages</div>
+          <h2>เลือกแพ็กเกจที่<em>ใช่</em>สำหรับธุรกิจของคุณ</h2>
+          <p class="page-desc">ทุกแพ็กเกจมาพร้อมสินค้า/ข้อมูล/พื้นที่ไม่จำกัด รองรับ 2 ภาษา และ Call Center 24/7 ตลอดอายุการใช้งาน</p>
+        </div>
+      </header>
+
+      <div class="pricing">
+        <article class="plan">
+          <div class="plan-head plan-head--azure">
+            <div class="plan-name">Starter Go</div>
+            <p class="plan-desc">สำหรับธุรกิจที่เริ่มต้น ต้องการเว็บไซต์สวย พร้อมใช้งานตั้งแต่วันแรก</p>
+          </div>
+          <div class="plan-body">
+            <div class="plan-price"><strong>99,000</strong><span>บาท / ปีแรก</span></div>
+            <div class="plan-renew">ต่ออายุ 59,000 บาท / ปีถัดไป</div>
+            <div class="plan-divider"></div>
+            <ul>
+              <li><span class="check">✓</span>ออกแบบเว็บไซต์ <strong>5 หน้า</strong></li>
+              <li><span class="check">✓</span>Lightning Tech + CDN</li>
+              <li><span class="check">✓</span>สินค้า / ข้อมูล / พื้นที่ ไม่จำกัด</li>
+              <li><span class="check">✓</span>รองรับ 2 ภาษา</li>
+              <li><span class="check">✓</span>ชำระเงิน 2C2P, Omise, K-Payment</li>
+              <li><span class="check">✓</span>User หลังบ้าน 5 คน · Call Center 24/7</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="plan plan--featured">
+          <div class="plan-popular">★ แพ็กเกจยอดนิยม</div>
+          <div class="plan-head plan-head--blue">
+            <div class="plan-name">Professional Max</div>
+            <p class="plan-desc">เว็บไซต์มืออาชีพ สินค้าไม่จำกัด และ AI Marketing ครบวงจร</p>
+          </div>
+          <div class="plan-body">
+            <div class="plan-price"><strong>149,000</strong><span>บาท / ปีแรก</span></div>
+            <div class="plan-renew">ต่ออายุ 59,000 บาท / ปีถัดไป</div>
+            <div class="plan-divider"></div>
+            <ul>
+              <li><span class="check">✓</span>ออกแบบเว็บไซต์ <strong>15 หน้า</strong></li>
+              <li><span class="check">✓</span><strong>ครบทุก Feature ของ Starter Go</strong></li>
+              <li><span class="check">✓</span>ชำระเงิน + Xendit</li>
+              <li><span class="check">✓</span>R-CRM · R-Widget · R-Chatbot</li>
+              <li><span class="check">✓</span>AI SEO · Generative AI Search</li>
+              <li><span class="check">✓</span>Call Center 24/7 ตลอดอายุการใช้งาน</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="plan plan--dark">
+          <div class="plan-head plan-head--dark">
+            <div class="plan-name">Enterprise</div>
+            <p class="plan-desc">Customize Features และเชื่อมต่อระบบภายในขององค์กร</p>
+          </div>
+          <div class="plan-body">
+            <div class="plan-price"><strong>Contact Sales</strong></div>
+            <div class="plan-renew">เสนอราคาตาม Features ที่เลือก</div>
+            <div class="plan-divider"></div>
+            <ul>
+              <li><span class="check">★</span><strong>ครบทุก Feature ของ Professional Max</strong></li>
+              <li><span class="check">✓</span>ERP / POS / Legacy CRM Integration</li>
+              <li><span class="check">✓</span>Dedicated Server</li>
+              <li><span class="check">✓</span>ปรับแต่งตามขอบเขตงาน</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <p class="plan-note">ราคายังไม่รวมภาษีมูลค่าเพิ่ม · เงื่อนไขเป็นไปตามที่บริษัทกำหนด</p>
+
+      <div class="mid-grid">
+        <div class="clients">
+          <h3>ผลงานลูกค้า</h3>
+          <div class="client-grid">
+            <div class="client"><strong>MR.DIY Online</strong><span>E-Commerce</span></div>
+            <div class="client"><strong>WaiWai Global</strong><span>Brand Site</span></div>
+            <div class="client"><strong>Siam Fresh</strong><span>อาหารสด · ส่งออก</span></div>
+            <div class="client"><strong>SMD Sappaya</strong><span>เครื่องมือแพทย์</span></div>
+            <div class="client"><strong>UTI Visual Sound</strong><span>Corporate</span></div>
+            <div class="client"><strong>Terminal</strong><span>Business Website</span></div>
+            <div class="client"><strong>ITNS Store</strong><span>E-Commerce</span></div>
+            <div class="client"><strong>SAF</strong><span>Corporate Website</span></div>
+          </div>
+        </div>
+
+        <div class="caps">
+          <h3>ความสามารถครบทุกด้าน</h3>
+          <div class="cap-group">
+            <div class="cap-label">Performance &amp; SEO</div>
+            <span class="tag">Lightning Tech</span>
+            <span class="tag">CDN</span>
+            <span class="tag">SSR / SSG</span>
+            <span class="tag">SSL</span>
+            <span class="tag">AI SEO Ready</span>
+          </div>
+          <div class="cap-group">
+            <div class="cap-label">Commerce</div>
+            <span class="tag">สินค้าไม่จำกัด</span>
+            <span class="tag">Order Management</span>
+            <span class="tag">Payment Gateway</span>
+            <span class="tag">Promotion Tools</span>
+          </div>
+          <div class="cap-group">
+            <div class="cap-label">Marketing &amp; AI</div>
+            <span class="tag">R-CRM</span>
+            <span class="tag">R-Widget</span>
+            <span class="tag">R-FAQ</span>
+            <span class="tag tag--ai">R-Chatbot</span>
+            <span class="tag">AI Schema Markup</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust">
+        <div class="stat"><strong>25+</strong><span>ปีของประสบการณ์</span></div>
+        <div class="stat"><strong>8,000+</strong><span>ธุรกิจไว้วางใจ</span></div>
+        <div class="stat"><strong>140+</strong><span>ผู้เชี่ยวชาญ</span></div>
+        <div class="stat"><strong>24 ชม.</strong><span>Call Center</span></div>
+      </div>
+
+      <div class="cta-band">
+        <div>
+          <h3>พร้อมยกระดับเว็บไซต์ธุรกิจของคุณแล้วหรือยัง?</h3>
+          <p>ปรึกษาผู้เชี่ยวชาญฟรี ไม่มีค่าใช้จ่าย</p>
+          <div class="cta-actions">
+            <span class="cta-btn">ขอคำปรึกษาฟรี</span>
+            <div>
+              <div class="cta-phone">02-016-6789</div>
+              <div class="cta-url">www.readyplanet.com/ai-webmax</div>
+            </div>
+          </div>
+        </div>
+        <div class="qr-box">
+          <div class="qr"><div class="qr-inner"></div></div>
+          <div class="qr-label">สแกนเพื่อดูรายละเอียด</div>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div class="brand-mark">
+          <svg viewBox="100 100 330 330"><circle cx="264.95" cy="263.33" r="148.78" fill="#006ef2"/><path d="M276.8,197.82a10.52,10.52,0,0,1,7.93,3.64,12.72,12.72,0,0,1,3.3,8.72v16a12.87,12.87,0,0,1-3.3,8.83,10.39,10.39,0,0,1-7.93,3.63L174,238.4v44h11.89V248.9h84.38l14.52,33.5H298l-13-30-1.93-4.25,3.18-1.57a23.31,23.31,0,0,0,9.91-9.24,26.35,26.35,0,0,0,3.72-14V213.15a25.71,25.71,0,0,0-6.78-18.09,21.13,21.13,0,0,0-16.34-7.45H174v10.32Z" fill="#fff"/></svg>
+          <span style="color: var(--g700);">AI-WebMax</span>
+        </div>
+        <span>02 · www.readyplanet.com/ai-webmax</span>
+      </footer>
+    </div>
+  </section>
+
+</body>
+</html>

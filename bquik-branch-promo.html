@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B-Quik — เลือกสาขาโปรโมชั่น</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow: #FFD100;
+      --yellow-dark: #E6BC00;
+      --black: #1A1A1A;
+      --gray-50: #F7F7F7;
+      --gray-100: #EFEFEF;
+      --gray-200: #E0E0E0;
+      --gray-400: #9E9E9E;
+      --gray-600: #666;
+      --white: #FFFFFF;
+      --radius: 8px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    body {
+      font-family: 'Noto Sans Thai', sans-serif;
+      background: var(--gray-100);
+      color: var(--black);
+      min-height: 100vh;
+    }
+
+    /* ── Checkout page (background) ── */
+    .checkout-page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px 80px;
+    }
+
+    .checkout-header {
+      background: var(--yellow);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: -24px -16px 24px;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span { color: var(--black); }
+    .logo em { font-style: normal; color: #333; }
+
+    .stepper {
+      display: flex;
+      gap: 0;
+      margin-bottom: 24px;
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+    }
+
+    .step {
+      flex: 1;
+      padding: 12px 8px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--gray-600);
+      border-right: 1px solid var(--gray-200);
+    }
+
+    .step:last-child { border-right: none; }
+    .step.active { background: var(--yellow); font-weight: 600; color: var(--black); }
+
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .checkout-grid { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .panel-header {
+      padding: 14px 20px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .panel-body { padding: 20px; }
+
+    .delivery-options {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .delivery-opt {
+      flex: 1;
+      min-width: 120px;
+      padding: 16px 12px;
+      border: 2px solid var(--gray-200);
+      border-radius: var(--radius);
+      text-align: center;
+      font-size: 0.85rem;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .delivery-opt.selected {
+      border-color: var(--yellow);
+      background: #FFFBE6;
+    }
+
+    .delivery-opt.selected::after {
+      content: '✓';
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 20px;
+      height: 20px;
+      background: var(--black);
+      color: var(--yellow);
+      border-radius: 50%;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-search-branch {
+      width: 100%;
+      padding: 12px 20px;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      transition: opacity 0.15s;
+    }
+
+    .btn-search-branch:hover { opacity: 0.9; }
+
+    .selected-branch-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: none;
+    }
+
+    .selected-branch-card.visible { display: block; }
+
+    .selected-branch-card .branch-name {
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .selected-branch-card .branch-meta {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    .selected-branch-card .distance {
+      float: right;
+      font-size: 0.8rem;
+      color: var(--gray-400);
+    }
+
+    .promo-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-top: 8px;
+    }
+
+    .summary-box {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 20px;
+      position: sticky;
+      top: 16px;
+    }
+
+    .summary-box h3 {
+      font-size: 1rem;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .btn-pay {
+      width: 100%;
+      margin-top: 16px;
+      padding: 14px;
+      background: var(--yellow);
+      border: none;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    /* ── Drawer overlay (เลือกสาขา — สไลด์จากขวา) ── */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    .drawer-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .branch-drawer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      max-width: 480px;
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: -4px 0 32px rgba(0, 0, 0, 0.18);
+      transform: translateX(100%);
+      transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .drawer-overlay.open .branch-drawer {
+      transform: translateX(0);
+    }
+
+    /* ── Popup overlay (รายละเอียดโปรโมชั่น — กลางจอ) ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1100;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, visibility 0.2s;
+      padding: 16px;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .branch-drawer-header {
+      background: var(--yellow);
+      padding: 20px 20px 16px;
+      flex-shrink: 0;
+    }
+
+    .branch-drawer-header h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .search-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .search-input-wrap {
+      flex: 1;
+      position: relative;
+    }
+
+    .search-input-wrap svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-400);
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 12px 10px 36px;
+      border: none;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 0.85rem;
+    }
+
+    .distance-select {
+      padding: 10px 28px 10px 12px;
+      border: none;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 0.8rem;
+      background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 8px center;
+      appearance: none;
+      min-width: 100px;
+    }
+
+    .btn-search {
+      width: 100%;
+      padding: 11px;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .branch-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--gray-200);
+      padding: 0 8px;
+      overflow-x: auto;
+      flex-shrink: 0;
+    }
+
+    .branch-tab {
+      padding: 12px 10px;
+      font-size: 0.8rem;
+      color: var(--gray-600);
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-family: inherit;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+
+    .branch-tab:hover { color: var(--black); }
+
+    .branch-tab.active {
+      color: var(--black);
+      font-weight: 700;
+      border-bottom-color: var(--black);
+    }
+
+    .branch-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 16px;
+      min-height: 0;
+    }
+
+    .branch-card {
+      background: var(--gray-50);
+      border: 2px solid transparent;
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .branch-card:hover { background: #F0F0F0; }
+
+    .branch-card.selected {
+      border-color: var(--black);
+      background: var(--white);
+    }
+
+    .branch-card .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+
+    .branch-card .check-icon {
+      width: 22px;
+      height: 22px;
+      background: var(--black);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-right: 8px;
+    }
+
+    .branch-card .check-icon svg { color: var(--yellow); }
+
+    .branch-card:not(.selected) .check-icon {
+      background: transparent;
+      border: 2px solid var(--gray-200);
+    }
+
+    .branch-card:not(.selected) .check-icon svg { display: none; }
+
+    .branch-card .name-row {
+      display: flex;
+      align-items: flex-start;
+      flex: 1;
+    }
+
+    .branch-card .branch-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .branch-card .card-distance {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      white-space: nowrap;
+    }
+
+    .branch-card .card-info {
+      font-size: 0.8rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+      padding-left: 30px;
+    }
+
+    .branch-card .promo-link {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 0.8rem;
+      color: var(--black);
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      padding: 0;
+    }
+
+    .branch-card .promo-link:hover { color: #555; }
+
+    .branch-card .radio-wrap {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .branch-card .radio {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--gray-400);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .branch-card.selected .radio {
+      border-color: var(--black);
+    }
+
+    .branch-card.selected .radio::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: var(--black);
+      border-radius: 50%;
+    }
+
+    .branch-drawer-footer {
+      display: flex;
+      gap: 10px;
+      padding: 14px 16px;
+      border-top: 1px solid var(--gray-200);
+      background: var(--white);
+      flex-shrink: 0;
+    }
+
+    .btn-back {
+      flex: 0 0 auto;
+      padding: 12px 24px;
+      background: var(--white);
+      border: 1px solid var(--black);
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .btn-confirm {
+      flex: 1;
+      padding: 12px 16px;
+      background: var(--yellow);
+      border: none;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--gray-400);
+      font-size: 0.9rem;
+    }
+
+    /* ── Promotion detail modal ── */
+    .promo-modal {
+      background: var(--white);
+      width: 100%;
+      max-width: 420px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transform: translateY(12px) scale(0.98);
+      transition: transform 0.2s;
+    }
+
+    .modal-overlay.open .promo-modal { transform: translateY(0) scale(1); }
+
+    .promo-modal-header {
+      background: var(--yellow);
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .promo-modal-header h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.4;
+      padding-right: 12px;
+    }
+
+    .btn-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--black);
+      padding: 0 4px;
+    }
+
+    .promo-modal-body {
+      padding: 20px;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+
+    .promo-hook {
+      font-size: 0.82rem;
+      color: var(--gray-600);
+      margin-bottom: 4px;
+    }
+
+    .promo-event-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .promo-branch-label {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      margin-bottom: 16px;
+    }
+
+    .promo-hero-card {
+      background: #FFFBE6;
+      border: 2px solid var(--yellow);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .promo-hero-tag {
+      display: inline-block;
+      background: #FF6B00;
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+
+    .promo-hero-offer {
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--black);
+    }
+
+    .promo-hero-sub {
+      font-size: 0.88rem;
+      color: var(--gray-600);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .promo-meta-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .promo-meta-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .promo-meta-icon {
+      flex-shrink: 0;
+      width: 20px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .promo-meta-text strong {
+      font-weight: 600;
+    }
+
+    .promo-terms {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .promo-terms-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--gray-600);
+    }
+
+    .promo-terms ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .promo-terms li {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+      line-height: 1.7;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .promo-terms li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--gray-400);
+    }
+
+    /* fallback: หลายโปรแบบการ์ด */
+    .promo-branch-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .promo-branch-addr {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      margin-bottom: 16px;
+    }
+
+    .promo-item {
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+
+    .promo-item:last-child { margin-bottom: 0; }
+
+    .promo-item .promo-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .promo-item .promo-tag {
+      background: #FF6B00;
+      color: white;
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    .promo-item .promo-desc {
+      font-size: 0.82rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    .promo-item .promo-period {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      margin-top: 8px;
+    }
+
+    .promo-modal-footer {
+      padding: 14px 20px;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .btn-promo-close {
+      width: 100%;
+      padding: 12px;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* Demo hint */
+    .demo-hint {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--black);
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      z-index: 100;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- หน้ายืนยันการสั่งซื้อ (พื้นหลัง) -->
+  <div class="checkout-page">
+    <div class="checkout-header">
+      <div class="logo"><span>B-</span><em>QUIK</em></div>
+      <span style="font-size:0.85rem;color:#333;">ยืนยันการสั่งซื้อ</span>
+    </div>
+
+    <div class="stepper">
+      <div class="step">1. รายการสินค้า</div>
+      <div class="step active">2. ยืนยันการสั่งซื้อ</div>
+      <div class="step">3. ชำระเงิน</div>
+      <div class="step">4. สำเร็จ</div>
+    </div>
+
+    <div class="checkout-grid">
+      <div>
+        <div class="panel">
+          <div class="panel-header">เลือกช่องทางรับสินค้า</div>
+          <div class="panel-body">
+            <div class="delivery-options">
+              <div class="delivery-opt selected">ติดตั้งที่สาขา</div>
+              <div class="delivery-opt">จัดส่งสินค้า</div>
+              <div class="delivery-opt">Mobile Service</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">เลือกสาขาที่เข้ารับบริการ</div>
+          <div class="panel-body">
+            <button type="button" class="btn-search-branch" id="btnOpenBranchModal">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              ค้นหาสาขา
+            </button>
+
+            <div class="selected-branch-card" id="selectedBranchCard">
+              <span class="distance" id="selectedDistance"></span>
+              <div class="branch-name">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span id="selectedBranchName">—</span>
+              </div>
+              <div class="branch-meta" id="selectedBranchMeta"></div>
+              <span class="promo-badge" id="selectedPromoBadge" style="display:none;">ร่วมโปรโมชัน</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">เลือกวันนัดหมาย</div>
+          <div class="panel-body" style="font-size:0.9rem;color:#666;">
+            วันพฤหัสบดี 14 ม.ค. 2569 ช่วงเช้า
+          </div>
+        </div>
+      </div>
+
+      <div class="summary-box">
+        <h3>สรุปรายการสั่งซื้อ</h3>
+        <div class="summary-item">
+          <span>285/40R20 LATITUDE SPORT 3</span>
+          <span>16,296.-</span>
+        </div>
+        <div class="summary-item" style="color:#888;font-size:0.85rem;">
+          <span>ส่วนลดคูปอง</span>
+          <span>-0.-</span>
+        </div>
+        <div class="summary-total">
+          <span>ยอดชำระทั้งหมด</span>
+          <span>16,171.-</span>
+        </div>
+        <button type="button" class="btn-pay">ชำระเงิน</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drawer: เลือกสาขา (สไลด์จากขวา) -->
+  <div class="drawer-overlay" id="branchModalOverlay" role="dialog" aria-modal="true" aria-labelledby="branchModalTitle">
+    <div class="branch-drawer">
+      <div class="branch-drawer-header">
+        <h2 id="branchModalTitle">เลือกสาขาที่ต้องการ</h2>
+        <div class="search-row">
+          <div class="search-input-wrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="text" class="search-input" placeholder="สถานที่ใกล้เคียงหรือรหัสไปรษณีย์" id="branchSearchInput" />
+          </div>
+          <select class="distance-select" id="distanceSelect">
+            <option>ระยะทาง</option>
+            <option>5 กม.</option>
+            <option>10 กม.</option>
+            <option>20 กม.</option>
+          </select>
+        </div>
+        <button type="button" class="btn-search" id="btnBranchSearch">ค้นหา</button>
+      </div>
+
+      <div class="branch-tabs" role="tablist">
+        <button type="button" class="branch-tab" data-tab="all" role="tab">สาขาทั้งหมด</button>
+        <button type="button" class="branch-tab active" data-tab="promo" role="tab" aria-selected="true">สาขาโปรโมชั่น</button>
+        <button type="button" class="branch-tab" data-tab="recent" role="tab">ใช้บริการล่าสุด</button>
+        <button type="button" class="branch-tab" data-tab="favorite" role="tab">สาขาที่ชื่นชอบ</button>
+      </div>
+
+      <div class="branch-list" id="branchList" role="tabpanel"></div>
+
+      <div class="branch-drawer-footer">
+        <button type="button" class="btn-back" id="btnBranchBack">กลับ</button>
+        <button type="button" class="btn-confirm" id="btnBranchConfirm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+          เลือกเป็นสาขาติดตั้ง
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: รายละเอียดโปรโมชั่น -->
+  <div class="modal-overlay" id="promoModalOverlay" role="dialog" aria-modal="true" aria-labelledby="promoModalTitle">
+    <div class="promo-modal">
+      <div class="promo-modal-header">
+        <h3 id="promoModalTitle">รายละเอียดโปรโมชั่น</h3>
+        <button type="button" class="btn-close" id="btnPromoClose" aria-label="ปิด">&times;</button>
+      </div>
+      <div class="promo-modal-body" id="promoModalBody"></div>
+      <div class="promo-modal-footer">
+        <button type="button" class="btn-promo-close" id="btnPromoCloseBottom">ปิด</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-hint" id="demoHint">กด "ค้นหาสาขา" เพื่อเลือกสาขาโปรโมชั่น</div>
+
+  <script>
+    const BRANCHES = [
+      {
+        id: 'rama9',
+        name: 'บี-ควิก สาขา พระราม 9',
+        province: 'กรุงเทพมหานคร',
+        hours: 'เวลาทำการ 8.00 - 21.00 น.',
+        phone: '02-407-3175',
+        address: 'เลขที่ 199 ถนนพระราม 9 แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพฯ 10310',
+        distance: 5.31,
+        hasPromo: true,
+        promoOnly: true,
+        recent: true,
+        favorite: false,
+        promotions: [
+          {
+            title: 'ลด 500 บาท เมื่อเปลี่ยนยาง 4 เส้น',
+            tag: 'HOT',
+            desc: 'รับส่วนลดทันที 500 บาท เมื่อซื้อยาง 4 เส้น พร้อมติดตั้งที่สาขา (ยกเว้นยางรุ่นโปรโมชันอื่น)',
+            period: '1 ม.ค. – 31 มี.ค. 2569'
+          },
+          {
+            title: 'ฟรีตั้งศูนย์ล้อ มูลค่า 800 บาท',
+            tag: 'NEW',
+            desc: 'ฟรีบริการตั้งศูนย์ล้อ 4 ล้อ เมื่อซื้อยาง Michelin รุ่นที่ร่วมรายการ',
+            period: '1 ม.ค. – 28 ก.พ. 2569'
+          }
+        ]
+      },
+      {
+        id: 'mengjai',
+        name: 'บี-ควิก สาขา เหม่งจ๋าย',
+        province: 'กรุงเทพมหานคร',
+        hours: 'เวลาทำการ 8.00 - 21.00 น.',
+        phone: '02-619-1153',
+        address: 'เลขที่ 555 ถนนลาดพร้าว แขวงจรเข้บัว เขตลาดพร้าว กรุงเทพฯ 10230',
+        distance: 7.82,
+        hasPromo: true,
+        promoOnly: true,
+        recent: false,
+        favorite: true,
+        promotions: [
+          {
+            title: 'ผ่อน 0% นาน 10 เดือน',
+            tag: 'HOT',
+            desc: 'ผ่อนชำระ 0% นาน 10 เดือน เมื่อใช้บัตรเครดิตที่ร่วมรายการ (ยอดขั้นต่ำ 5,000 บาท)',
+            period: '1 ธ.ค. 2568 – 31 มี.ค. 2569'
+          }
+        ]
+      },
+      {
+        id: 'ramkhamhaeng',
+        name: 'บี-ควิก สาขา ถนนรามคำแหง',
+        province: 'กรุงเทพมหานคร',
+        hours: 'เวลาทำการ 8.00 - 21.00 น.',
+        phone: '02-319-1153',
+        address: 'เลขที่ 999 ถนนรามคำแหง แขวงหัวหมาก เขตบางกะปิ กรุงเทพฯ 10240',
+        distance: 4.48,
+        hasPromo: true,
+        promoOnly: true,
+        recent: true,
+        favorite: true,
+        promoDetail: {
+          hook: 'ชาวรามคำแหง เตรียมเฮ 🎉',
+          headline: 'บี-ควิก ฉลองเปิดใหม่',
+          tag: 'เปิดใหม่',
+          mainOffer: 'ยาง ซื้อ 1 แถม 1',
+          subOffer: 'จับรายชื่อ 50 คันต่อวัน',
+          date: '27–29 มิ.ย. 2568 (3 วันเท่านั้น)',
+          terms: [
+            'จำกัด 50 สิทธิ์ต่อวัน',
+            'ใช้ได้เฉพาะสาขาถนนรามคำแหง',
+            'ยกขบวนโปรโมชั่นจัดหนัก จัดเต็ม',
+            '*เงื่อนไขเป็นไปตามที่บริษัทกำหนด'
+          ]
+        },
+        promotions: []
+      },
+      {
+        id: 'ladprao',
+        name: 'บี-ควิก สาขา ลาดพร้าว',
+        province: 'กรุงเทพมหานคร',
+        hours: 'เวลาทำการ 8.00 - 21.00 น.',
+        phone: '02-539-1153',
+        address: 'เลขที่ 100 ซอยลาดพร้าว 71 แขวงลาดพร้าว เขตลาดพร้าว กรุงเทพฯ 10230',
+        distance: 9.15,
+        hasPromo: false,
+        promoOnly: false,
+        recent: false,
+        favorite: false,
+        promotions: []
+      },
+      {
+        id: 'bangna',
+        name: 'บี-ควิก สาขา บางนา',
+        province: 'กรุงเทพมหานคร',
+        hours: 'เวลาทำการ 8.00 - 21.00 น.',
+        phone: '02-744-1153',
+        address: 'เลขที่ 88 ถนนบางนา-ตราด กม.5 แขวงบางนา เขตบางนา กรุงเทพฯ 10260',
+        distance: 12.40,
+        hasPromo: false,
+        promoOnly: false,
+        recent: true,
+        favorite: false,
+        promotions: []
+      }
+    ];
+
+    let currentTab = 'promo';
+    let selectedBranchId = 'rama9';
+    let searchQuery = '';
+
+    const branchModalOverlay = document.getElementById('branchModalOverlay');
+    const promoModalOverlay = document.getElementById('promoModalOverlay');
+    const branchList = document.getElementById('branchList');
+    const demoHint = document.getElementById('demoHint');
+
+    function filterBranches() {
+      let list = [...BRANCHES];
+
+      if (currentTab === 'promo') list = list.filter(b => b.hasPromo);
+      else if (currentTab === 'recent') list = list.filter(b => b.recent);
+      else if (currentTab === 'favorite') list = list.filter(b => b.favorite);
+
+      if (searchQuery.trim()) {
+        const q = searchQuery.trim().toLowerCase();
+        list = list.filter(b =>
+          b.name.toLowerCase().includes(q) ||
+          b.province.toLowerCase().includes(q) ||
+          b.address.toLowerCase().includes(q)
+        );
+      }
+
+      return list;
+    }
+
+    function renderBranchCard(branch) {
+      const isSelected = branch.id === selectedBranchId;
+      const promoLink = branch.hasPromo
+        ? `<button type="button" class="promo-link" data-promo-id="${branch.id}">ดูรายละเอียดโปรโมชั่น</button>`
+        : '';
+
+      return `
+        <div class="branch-card ${isSelected ? 'selected' : ''}" data-branch-id="${branch.id}" role="option" aria-selected="${isSelected}">
+          <div class="card-top">
+            <div class="name-row">
+              <div class="check-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </div>
+              <div>
+                <div class="branch-title">${branch.name}</div>
+              </div>
+            </div>
+            <span class="card-distance">${branch.distance.toFixed(2)} กิโลเมตร</span>
+          </div>
+          <div class="card-info">
+            ${branch.province}<br>
+            ${branch.hours}<br>
+            โทร ${branch.phone}<br>
+            ${promoLink}
+          </div>
+          <div class="radio-wrap"><div class="radio"></div></div>
+        </div>
+      `;
+    }
+
+    function renderBranchList() {
+      const branches = filterBranches();
+      if (branches.length === 0) {
+        branchList.innerHTML = '<div class="empty-state">ไม่พบสาขาในหมวดนี้</div>';
+        return;
+      }
+      branchList.innerHTML = branches.map(renderBranchCard).join('');
+    }
+
+    function openBranchModal() {
+      branchModalOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      demoHint.style.display = 'none';
+      renderBranchList();
+    }
+
+    function closeBranchModal() {
+      branchModalOverlay.classList.remove('open');
+      if (!promoModalOverlay.classList.contains('open')) {
+        document.body.style.overflow = '';
+      }
+    }
+
+    function renderPromoDetail(branch) {
+      const d = branch.promoDetail;
+      const termsHtml = d.terms.map(t => `<li>${t}</li>`).join('');
+
+      return `
+        <div class="promo-hook">${d.hook}</div>
+        <div class="promo-event-title">${d.headline}</div>
+        <div class="promo-branch-label">${branch.name}</div>
+
+        <div class="promo-hero-card">
+          <span class="promo-hero-tag">${d.tag}</span>
+          <div class="promo-hero-offer">${d.mainOffer}</div>
+          <div class="promo-hero-sub">${d.subOffer}</div>
+        </div>
+
+        <div class="promo-meta-list">
+          <div class="promo-meta-row">
+            <span class="promo-meta-icon">📅</span>
+            <span class="promo-meta-text"><strong>${d.date}</strong></span>
+          </div>
+          <div class="promo-meta-row">
+            <span class="promo-meta-icon">📍</span>
+            <span class="promo-meta-text">${branch.name}<br>${branch.address}</span>
+          </div>
+        </div>
+
+        <div class="promo-terms">
+          <div class="promo-terms-title">เงื่อนไข</div>
+          <ul>${termsHtml}</ul>
+        </div>
+      `;
+    }
+
+    function renderPromoCards(branch) {
+      return `
+        <div class="promo-branch-name">${branch.name}</div>
+        <div class="promo-branch-addr">${branch.address}</div>
+        ${branch.promotions.map(p => `
+          <div class="promo-item">
+            <div class="promo-title">
+              <span class="promo-tag">${p.tag}</span>
+              ${p.title}
+            </div>
+            <div class="promo-desc">${p.desc}</div>
+            <div class="promo-period">ระยะเวลา: ${p.period}</div>
+          </div>
+        `).join('')}
+      `;
+    }
+
+    function openPromoModal(branchId) {
+      const branch = BRANCHES.find(b => b.id === branchId);
+      if (!branch) return;
+      if (!branch.promoDetail && !branch.promotions.length) return;
+
+      document.getElementById('promoModalTitle').textContent = 'รายละเอียดโปรโมชั่น';
+      document.getElementById('promoModalBody').innerHTML = branch.promoDetail
+        ? renderPromoDetail(branch)
+        : renderPromoCards(branch);
+      promoModalOverlay.classList.add('open');
+    }
+
+    function closePromoModal() {
+      promoModalOverlay.classList.remove('open');
+      if (!branchModalOverlay.classList.contains('open')) {
+        document.body.style.overflow = '';
+      }
+    }
+
+    function updateSelectedBranchDisplay() {
+      const branch = BRANCHES.find(b => b.id === selectedBranchId);
+      if (!branch) return;
+
+      const card = document.getElementById('selectedBranchCard');
+      card.classList.add('visible');
+      document.getElementById('selectedBranchName').textContent = branch.name;
+      document.getElementById('selectedBranchMeta').innerHTML =
+        `${branch.province}<br>${branch.hours} โทร ${branch.phone}`;
+      document.getElementById('selectedDistance').textContent =
+        `${branch.distance.toFixed(2)} กิโลเมตร`;
+      document.getElementById('selectedPromoBadge').style.display =
+        branch.hasPromo ? 'inline-block' : 'none';
+    }
+
+    function confirmBranch() {
+      updateSelectedBranchDisplay();
+      closeBranchModal();
+      demoHint.textContent = 'เลือกสาขาเรียบร้อย — กด "ค้นหาสาขา" อีกครั้งเพื่อเปลี่ยน';
+      demoHint.style.display = 'block';
+    }
+
+    // Event listeners
+    document.getElementById('btnOpenBranchModal').addEventListener('click', openBranchModal);
+    document.getElementById('btnBranchBack').addEventListener('click', closeBranchModal);
+    document.getElementById('btnBranchConfirm').addEventListener('click', confirmBranch);
+    document.getElementById('btnBranchSearch').addEventListener('click', () => {
+      searchQuery = document.getElementById('branchSearchInput').value;
+      renderBranchList();
+    });
+    document.getElementById('btnPromoClose').addEventListener('click', closePromoModal);
+    document.getElementById('btnPromoCloseBottom').addEventListener('click', closePromoModal);
+
+    branchModalOverlay.addEventListener('click', (e) => {
+      if (e.target === branchModalOverlay) closeBranchModal();
+    });
+    promoModalOverlay.addEventListener('click', (e) => {
+      if (e.target === promoModalOverlay) closePromoModal();
+    });
+
+    document.querySelectorAll('.branch-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.branch-tab').forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        currentTab = tab.dataset.tab;
+        renderBranchList();
+      });
+    });
+
+    branchList.addEventListener('click', (e) => {
+      const promoBtn = e.target.closest('.promo-link');
+      if (promoBtn) {
+        e.stopPropagation();
+        openPromoModal(promoBtn.dataset.promoId);
+        return;
+      }
+
+      const card = e.target.closest('.branch-card');
+      if (card) {
+        selectedBranchId = card.dataset.branchId;
+        renderBranchList();
+      }
+    });
+
+    // Auto-demo: เปิด modal และจำลองกดดูรายละเอียดโปรโมชั่น (สาขารามคำแหง)
+    function runDemo() {
+      openBranchModal();
+      setTimeout(() => {
+        const ramkhamhaengLink = branchList.querySelector('.promo-link[data-promo-id="ramkhamhaeng"]');
+        if (ramkhamhaengLink) {
+          ramkhamhaengLink.style.outline = '2px solid #FF6B00';
+          ramkhamhaengLink.style.outlineOffset = '2px';
+          setTimeout(() => {
+            openPromoModal('ramkhamhaeng');
+            ramkhamhaengLink.style.outline = '';
+          }, 800);
+        }
+      }, 600);
+    }
+
+    // เริ่ม demo อัตโนมัติเมื่อโหลดหน้า (สามารถปิดได้โดย comment บรรทัดนี้)
+    window.addEventListener('load', () => setTimeout(runDemo, 500));
+  </script>
+</body>
+</html>

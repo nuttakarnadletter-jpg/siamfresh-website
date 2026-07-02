@@ -2351,6 +2351,9 @@ h1 span {
 .revise-product-grid .product-card-link::before {
   content: "";
   display: block;
+  position: relative;
+  z-index: 3;
+  flex: 0 0 var(--product-bar-height);
   height: var(--product-bar-height);
   background: var(--green-2);
   transition: height 0.24s ease, background-color 0.24s ease;
@@ -2383,6 +2386,11 @@ h1 span {
 
 .revise-product-grid .product-card-link:nth-child(3) img {
   object-position: center center;
+}
+
+.revise-product-grid img.product-mango-zoom {
+  transform: scale(1.08);
+  transform-origin: center center;
 }
 
 .revise-product-grid img.product-monthong-zoom {
@@ -2481,6 +2489,11 @@ h1 span {
 .revise-product-grid .product-card-link:focus-visible img {
   filter: saturate(1.06) contrast(1.03);
   transform: scale(1.045);
+}
+
+.revise-product-grid .product-card-link:hover img.product-mango-zoom,
+.revise-product-grid .product-card-link:focus-visible img.product-mango-zoom {
+  transform: scale(1.12);
 }
 
 .revise-product-grid .product-card-link:hover .product-read-more,
