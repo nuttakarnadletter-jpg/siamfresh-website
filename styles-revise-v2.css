@@ -4798,7 +4798,20 @@ h1 span {
   padding: 28px 18px 18px;
 }
 
-.about-quality-block-certs .about-quality-block-head,
+.about-quality-block-certs .about-quality-block-head {
+  margin: -28px -18px 0;
+  padding: 0;
+  gap: 0;
+  text-align: center;
+}
+
+.about-quality-block-certs .about-quality-block-desc-certs {
+  margin: 0;
+  padding: 16px 0 14px;
+  color: var(--muted);
+  text-align: center;
+}
+
 .about-quality-block-qc .about-quality-block-head {
   margin: -28px -18px 0;
   padding: 0;
@@ -5390,10 +5403,12 @@ h1 span {
   right: -22px;
 }
 
-.about-awards-carousel > button:hover {
-  color: #fff;
-  background: var(--green);
-  transform: translateY(-50%) translateY(-1px);
+.about-awards-carousel > button:hover,
+.about-awards-carousel > button:focus-visible {
+  border-color: var(--green);
+  color: var(--green);
+  background: #fff;
+  transform: translateY(-50%);
 }
 
 .about-awards-track {
@@ -5665,12 +5680,13 @@ h1 span {
   color: var(--green);
   background: #fff;
   text-shadow: none;
+  transition: background 180ms ease, color 180ms ease;
 }
 
 .about-closing-cta:hover,
 .about-closing-cta:focus-visible {
   color: #fff;
-  background: var(--green-2);
+  background: linear-gradient(135deg, var(--green), var(--green-2));
   text-shadow: 0 1px 6px rgba(12, 56, 24, 0.42);
 }
 
@@ -5786,7 +5802,10 @@ h1 span {
     padding: 24px 14px 16px;
   }
 
-  .about-quality-block-certs .about-quality-block-head,
+  .about-quality-block-certs .about-quality-block-head {
+    margin: -24px -14px 0;
+  }
+
   .about-quality-block-qc .about-quality-block-head {
     margin: -24px -14px 0;
   }
@@ -5794,6 +5813,10 @@ h1 span {
   .about-quality-block-certs .about-quality-subtitle,
   .about-quality-block-qc .about-quality-subtitle {
     padding: 18px 14px;
+  }
+
+  .about-quality-block-certs .about-quality-block-desc-certs {
+    padding: 14px 0 12px;
   }
 
   .about-quality-block-certs .about-quality-block-desc,
