@@ -6,7 +6,7 @@ PORT=5174
 URL="http://127.0.0.1:${PORT}/revise-v2.html"
 LOG_FILE="/tmp/revise-v2-preview.log"
 
-echo "Opening Siam Fresh revise-v2 preview..."
+echo "Opening Siam Fresh preview..."
 echo ""
 
 if lsof -nP -iTCP:${PORT} -sTCP:LISTEN >/dev/null 2>&1; then

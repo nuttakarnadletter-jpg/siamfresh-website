@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="ocean" x1="0" y1="0" x2="1000" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f1fbef"/>
+      <stop offset="1" stop-color="#e4f6e8"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1000" height="520" fill="url(#ocean)"/>
+  <g fill="#c8e8d4" opacity="0.95">
+    <path d="M120 180c30-18 72-24 108-10 34 14 58 44 62 78-4 36-30 66-64 78-38 14-84 8-118-14-28-18-40-52-28-82 10-28 28-46 40-50z"/>
+    <path d="M210 120c48-8 98 8 132 42 30 30 38 74 22 112-18 42-58 72-104 78-52 8-102-18-132-62-24-36-24-88 4-126 22-30 52-44 78-44z"/>
+    <path d="M430 90c36-12 78-6 108 16 28 20 44 54 40 88-4 38-28 72-64 88-34 16-76 12-108-8-30-18-48-50-44-84 4-34 28-62 68-100z"/>
+    <path d="M500 150c22-8 48-4 66 12 18 14 26 38 22 60-4 24-20 44-42 52-24 10-52 4-70-14-16-16-22-40-16-62 6-22 22-40 40-48z"/>
+    <path d="M560 110c62-18 132-8 182 32 46 36 68 94 56 150-12 58-54 108-110 128-64 22-138 8-188-36-44-38-68-98-62-156 6-58 40-108 88-134 18-10 24-10 34-14z"/>
+    <path d="M760 170c28-10 60-4 82 16 20 18 30 46 24 72-6 28-28 52-56 60-30 10-64 2-86-20-20-20-28-50-20-76 8-26 28-46 56-52z"/>
+    <path d="M820 240c18-6 40-2 54 12 14 12 20 32 16 50-4 20-18 36-36 42-20 8-44 2-58-14-12-14-18-34-12-52 6-18 20-32 36-38z"/>
+    <path d="M300 300c34-10 74-4 102 18 26 20 40 52 36 82-4 32-26 60-58 72-34 14-74 8-102-14-26-20-38-54-30-84 8-30 30-54 52-74z"/>
+    <path d="M150 330c40-12 86-4 118 22 28 24 42 62 36 96-6 36-30 68-66 82-38 16-84 10-116-16-28-22-42-58-34-92 8-34 32-64 62-92z"/>
+  </g>
+  <g stroke="#228760" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.22">
+    <path d="M498 198h280"/>
+    <path d="M505 176v70"/>
+    <path d="M580 154v100"/>
+    <path d="M805 252h60"/>
+  </g>
+  <g filter="url(#glow)">
+    <circle cx="498" cy="198" r="7" fill="#228760"/>
+    <circle cx="505" cy="176" r="7" fill="#228760"/>
+    <circle cx="498" cy="210" r="7" fill="#228760"/>
+    <circle cx="525" cy="200" r="7" fill="#228760"/>
+    <circle cx="580" cy="154" r="7" fill="#228760"/>
+    <circle cx="805" cy="252" r="7" fill="#228760"/>
+    <circle cx="865" cy="220" r="7" fill="#228760"/>
+  </g>
+  <g fill="#0c3818" font-family="Montserrat, Arial, sans-serif" font-size="11" font-weight="600">
+    <text x="498" y="188" text-anchor="middle">France</text>
+    <text x="505" y="166" text-anchor="middle">Netherlands</text>
+    <text x="498" y="228" text-anchor="middle">Spain</text>
+    <text x="525" y="190" text-anchor="middle">Austria</text>
+    <text x="580" y="142" text-anchor="middle">Russia</text>
+    <text x="805" y="242" text-anchor="middle">Taiwan</text>
+    <text x="865" y="210" text-anchor="middle">Japan</text>
+  </g>
+</svg>

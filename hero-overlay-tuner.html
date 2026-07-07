@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero Overlay Tuner | Siam Fresh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --green-2: #75e545;
+        --green-dark: rgb(12, 56, 24);
+        --ink: #0c3818;
+        --panel: #f7faf7;
+        --border: rgba(34, 135, 96, 0.16);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Montserrat, sans-serif;
+        color: var(--ink);
+        background: #eef2ee;
+      }
+
+      .wrap {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 48px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(24px, 3vw, 32px);
+      }
+
+      .lead {
+        margin: 0 0 24px;
+        color: #4d5c52;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+        gap: 20px;
+        align-items: start;
+      }
+
+      .panel {
+        padding: 20px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: 0 10px 28px rgba(12, 56, 24, 0.06);
+      }
+
+      .panel h2 {
+        margin: 0 0 16px;
+        font-size: 18px;
+      }
+
+      .group {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+
+      .group label {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .group output {
+        color: #228760;
+        font-variant-numeric: tabular-nums;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        accent-color: #228760;
+      }
+
+      .row-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      select,
+      button {
+        font: inherit;
+      }
+
+      select {
+        width: 100%;
+        min-height: 42px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 0 12px;
+        background: #fff;
+      }
+
+      .actions {
+        display: grid;
+        gap: 10px;
+        margin-top: 8px;
+      }
+
+      button {
+        min-height: 42px;
+        border: 0;
+        border-radius: 8px;
+        padding: 0 14px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        color: #fff;
+        background: linear-gradient(90deg, #75e545, #228760);
+      }
+
+      .btn-secondary {
+        color: var(--ink);
+        background: #edf3ea;
+      }
+
+      .preview-card {
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: #0c3818;
+        box-shadow: 0 14px 36px rgba(12, 56, 24, 0.12);
+      }
+
+      .hero {
+        position: relative;
+        min-height: clamp(340px, 44vw, 480px);
+        overflow: hidden;
+      }
+
+      .hero-media,
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+      }
+
+      .hero-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+      }
+
+      .hero-overlay {
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: inherit;
+        padding: 56px 24px;
+        color: #fff;
+        text-align: center;
+      }
+
+      .hero-content .label {
+        color: #75e545;
+        font-size: 16px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero-content h3 {
+        margin: 0 0 12px;
+        font-size: clamp(36px, 5vw, 52px);
+        line-height: 1.08;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.34), 0 4px 16px rgba(12, 56, 24, 0.38);
+      }
+
+      .hero-content p {
+        max-width: 620px;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 16px;
+        line-height: 1.5;
+        text-shadow: 0 1px 10px rgba(0, 0, 0, 0.34);
+      }
+
+      .code-panel {
+        margin-top: 20px;
+        padding: 20px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: #fff;
+      }
+
+      .code-panel h2 {
+        margin: 0 0 10px;
+        font-size: 18px;
+      }
+
+      .hint {
+        margin: 0 0 12px;
+        color: #4d5c52;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      pre {
+        margin: 0;
+        padding: 14px;
+        overflow: auto;
+        border-radius: 10px;
+        background: #101815;
+        color: #d9f7c8;
+        font-size: 12px;
+        line-height: 1.55;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .status {
+        min-height: 20px;
+        margin-top: 10px;
+        color: #228760;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Hero Overlay Tuner</h1>
+      <p class="lead">
+        ลากปรับ overlay แบนเนอร์แล้วกด Copy CSS ไปวางใน
+        <code>styles-revise-v2.css</code> ที่ <code>--page-hero-overlay</code>
+        (ใช้กับทั้ง About และ Contact)
+      </p>
+
+      <div class="layout">
+        <aside class="panel">
+          <h2>ปรับค่า</h2>
+
+          <div class="group">
+            <label for="image-select">รูปตัวอย่าง</label>
+            <select id="image-select">
+              <option value="assets/banner-about.jpg">About — banner-about.jpg</option>
+              <option value="assets/banner-contact3.jpg" selected>Contact — banner-contact3.jpg</option>
+              <option value="assets/banner-contact2.jpg">Contact — banner-contact2.jpg</option>
+            </select>
+          </div>
+
+          <div class="group">
+            <label for="green-strong">เขียวสด มุมล่าง (ความเข้ม) <output id="green-strong-out">0.66</output></label>
+            <input id="green-strong" type="range" min="0" max="1" step="0.01" value="0.66" />
+          </div>
+
+          <div class="group">
+            <label for="green-mid">เขียวสด กลางไล่ <output id="green-mid-out">0.30</output></label>
+            <input id="green-mid" type="range" min="0" max="1" step="0.01" value="0.30" />
+          </div>
+
+          <div class="group">
+            <label for="green-size">ขนาดแสงเขียว <output id="green-size-out">52%</output></label>
+            <input id="green-size" type="range" min="30" max="80" step="1" value="52" />
+          </div>
+
+          <div class="row-2">
+            <div class="group">
+              <label for="dark-bottom">มืด ล่าง <output id="dark-bottom-out">0.12</output></label>
+              <input id="dark-bottom" type="range" min="0" max="0.9" step="0.01" value="0.12" />
+            </div>
+            <div class="group">
+              <label for="dark-mid">มืด กลาง <output id="dark-mid-out">0.34</output></label>
+              <input id="dark-mid" type="range" min="0" max="0.9" step="0.01" value="0.34" />
+            </div>
+          </div>
+
+          <div class="group">
+            <label for="dark-top">มืด บน <output id="dark-top-out">0.58</output></label>
+            <input id="dark-top" type="range" min="0" max="0.9" step="0.01" value="0.58" />
+          </div>
+
+          <div class="actions">
+            <button class="btn-primary" type="button" id="copy-css">Copy CSS</button>
+            <button class="btn-secondary" type="button" id="reset-css">รีเซ็ตค่าเริ่มต้น</button>
+          </div>
+        </aside>
+
+        <section>
+          <div class="preview-card">
+            <div class="hero" id="hero-preview">
+              <div class="hero-media" aria-hidden="true">
+                <img id="preview-image" src="assets/banner-contact3.jpg" alt="" />
+              </div>
+              <div class="hero-overlay" id="hero-overlay"></div>
+              <div class="hero-content">
+                <p class="label">Preview</p>
+                <h3>Contact Us</h3>
+                <p>Connect with our team for domestic, export, and general inquiries.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="code-panel">
+        <h2>CSS ที่ได้</h2>
+        <p class="hint">วางทับค่าใน <code>.about-hero, .contact-hero { --page-hero-overlay: ... }</code></p>
+        <pre id="css-output"></pre>
+        <p class="status" id="status" aria-live="polite"></p>
+      </section>
+    </div>
+
+    <script>
+      const defaults = {
+        greenStrong: 0.66,
+        greenMid: 0.3,
+        greenSize: 52,
+        darkBottom: 0.12,
+        darkMid: 0.34,
+        darkTop: 0.58,
+      };
+
+      const controls = {
+        greenStrong: document.getElementById("green-strong"),
+        greenMid: document.getElementById("green-mid"),
+        greenSize: document.getElementById("green-size"),
+        darkBottom: document.getElementById("dark-bottom"),
+        darkMid: document.getElementById("dark-mid"),
+        darkTop: document.getElementById("dark-top"),
+      };
+
+      const outputs = {
+        greenStrong: document.getElementById("green-strong-out"),
+        greenMid: document.getElementById("green-mid-out"),
+        greenSize: document.getElementById("green-size-out"),
+        darkBottom: document.getElementById("dark-bottom-out"),
+        darkMid: document.getElementById("dark-mid-out"),
+        darkTop: document.getElementById("dark-top-out"),
+      };
+
+      const overlayEl = document.getElementById("hero-overlay");
+      const cssOutput = document.getElementById("css-output");
+      const statusEl = document.getElementById("status");
+      const imageSelect = document.getElementById("image-select");
+      const previewImage = document.getElementById("preview-image");
+
+      function fmt(value, digits = 2) {
+        return Number(value).toFixed(digits);
+      }
+
+      function buildOverlay(values) {
+        const g1 = fmt(values.greenStrong);
+        const g2 = fmt(values.greenMid);
+        const g3 = fmt(Math.max(values.greenStrong - 0.04, 0));
+        const g4 = fmt(Math.max(values.greenMid - 0.02, 0));
+        const sizeW = `${values.greenSize}%`;
+        const sizeH = `${values.greenSize + 4}%`;
+
+        return `radial-gradient(ellipse ${sizeW} ${sizeH} at 0% 100%, rgba(117, 229, 69, ${g1}) 0%, rgba(117, 229, 69, ${g2}) 34%, transparent 72%),
+    radial-gradient(ellipse ${sizeW} ${sizeH} at 100% 100%, rgba(117, 229, 69, ${g3}) 0%, rgba(117, 229, 69, ${g4}) 34%, transparent 72%),
+    linear-gradient(0deg, rgba(12, 56, 24, ${fmt(values.darkBottom)}) 0%, rgba(12, 56, 24, ${fmt(values.darkMid)}) 46%, rgba(12, 56, 24, ${fmt(values.darkTop)}) 100%)`;
+      }
+
+      function readValues() {
+        return {
+          greenStrong: Number(controls.greenStrong.value),
+          greenMid: Number(controls.greenMid.value),
+          greenSize: Number(controls.greenSize.value),
+          darkBottom: Number(controls.darkBottom.value),
+          darkMid: Number(controls.darkMid.value),
+          darkTop: Number(controls.darkTop.value),
+        };
+      }
+
+      function render() {
+        const values = readValues();
+        outputs.greenStrong.textContent = fmt(values.greenStrong);
+        outputs.greenMid.textContent = fmt(values.greenMid);
+        outputs.greenSize.textContent = `${values.greenSize}%`;
+        outputs.darkBottom.textContent = fmt(values.darkBottom);
+        outputs.darkMid.textContent = fmt(values.darkMid);
+        outputs.darkTop.textContent = fmt(values.darkTop);
+
+        const overlay = buildOverlay(values);
+        overlayEl.style.background = overlay;
+        cssOutput.textContent = `--page-hero-overlay:\n    ${overlay};`;
+      }
+
+      function resetValues() {
+        Object.entries(defaults).forEach(([key, value]) => {
+          controls[key].value = String(value);
+        });
+        render();
+        statusEl.textContent = "รีเซ็ตค่าแล้ว";
+      }
+
+      async function copyCss() {
+        const text = cssOutput.textContent;
+        try {
+          await navigator.clipboard.writeText(text);
+          statusEl.textContent = "คัดลอก CSS แล้ว — วางใน styles-revise-v2.css ได้เลย";
+        } catch (error) {
+          statusEl.textContent = "คัดลอกไม่สำเร็จ — ลอง select แล้ว copy เองจากกล่องด้านล่าง";
+        }
+      }
+
+      Object.values(controls).forEach((control) => {
+        control.addEventListener("input", () => {
+          statusEl.textContent = "";
+          render();
+        });
+      });
+
+      imageSelect.addEventListener("change", () => {
+        previewImage.src = `${imageSelect.value}?t=${Date.now()}`;
+      });
+
+      document.getElementById("copy-css").addEventListener("click", copyCss);
+      document.getElementById("reset-css").addEventListener("click", resetValues);
+
+      render();
+    </script>
+  </body>
+</html>

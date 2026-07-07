@@ -87,6 +87,8 @@ const buildLoginGate = () => {
     return;
   }
 
+  document.body.classList.add("auth-pending");
+
   window.setTimeout(() => input.focus(), 0);
 
   form.addEventListener("submit", (event) => {
@@ -118,12 +120,22 @@ const buildDesignSwitcher = () => {
   document.body.appendChild(switcher);
 };
 
-if (document.body.dataset.auth === "off") {
+const isPreviewWorkspace = () => {
+  const path = window.location.pathname;
+  return /(?:^|\/)index\.html$/.test(path)
+    || /(?:^|\/)revise\.html$/.test(path)
+    || /(?:^|\/)revise-v2\.html$/.test(path);
+};
+
+if (document.body.dataset.auth === "off" || !isPreviewWorkspace()) {
   document.body.classList.remove("auth-pending");
 } else {
   buildLoginGate();
 }
-buildDesignSwitcher();
+
+if (isPreviewWorkspace() && document.body.dataset.auth !== "off") {
+  buildDesignSwitcher();
+}
 
 const reviseHeroSlides = document.querySelectorAll(".revise-hero-media img");
 const reviseHeroButtons = document.querySelectorAll(".revise-hero-controls button");
@@ -306,4 +318,190 @@ if (csrBanner && !reduceMotion) {
   window.addEventListener("scroll", requestParallaxUpdate, { passive: true });
   window.addEventListener("resize", requestParallaxUpdate);
   requestParallaxUpdate();
+}
+
+const certModal = document.getElementById("about-cert-modal");
+const certTrack = document.querySelector(".about-cert-static .about-cert-track");
+const certModalTitle = document.getElementById("about-cert-modal-title");
+const certModalCopy = document.querySelector(".about-cert-modal-copy");
+const certModalMedia = document.querySelector(".about-cert-modal-media");
+const certCloseTriggers = document.querySelectorAll("[data-cert-close]");
+
+if (certModal && certTrack && certModalTitle && certModalCopy && certModalMedia) {
+  let lastFocusedCert = null;
+
+  const closeCertModal = () => {
+    certModal.hidden = true;
+    document.body.style.overflow = "";
+    if (lastFocusedCert) {
+      lastFocusedCert.focus();
+    }
+  };
+
+  const openCertModal = (button) => {
+    const title = button.dataset.certTitle || "";
+    const description = button.dataset.certDescription || "";
+    const image = button.dataset.certImage || "";
+    const badge = button.dataset.certBadge || "";
+
+    certModalTitle.textContent = title;
+    certModalCopy.textContent = description;
+    certModalMedia.innerHTML = "";
+
+    if (image) {
+      const img = document.createElement("img");
+      img.src = image;
+      img.alt = title;
+      certModalMedia.appendChild(img);
+      certModalMedia.hidden = false;
+    } else if (badge) {
+      const badgeEl = document.createElement("span");
+      badgeEl.className = "about-cert-badge";
+      badgeEl.textContent = badge;
+      certModalMedia.appendChild(badgeEl);
+      certModalMedia.hidden = false;
+    } else {
+      certModalMedia.hidden = true;
+    }
+
+    lastFocusedCert = button;
+    certModal.hidden = false;
+    document.body.style.overflow = "hidden";
+    certModal.querySelector(".about-cert-modal-close")?.focus();
+  };
+
+  certTrack.addEventListener("click", (event) => {
+    const button = event.target.closest(".about-cert-logo");
+    if (button) {
+      openCertModal(button);
+    }
+  });
+
+  certCloseTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", closeCertModal);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !certModal.hidden) {
+      closeCertModal();
+    }
+  });
+}
+
+const awardsTrack = document.querySelector(".about-awards-track");
+const awardsPrev = document.querySelector(".about-awards-prev");
+const awardsNext = document.querySelector(".about-awards-next");
+
+if (awardsTrack && awardsPrev && awardsNext) {
+  const scrollAwards = (direction) => {
+    const card = awardsTrack.querySelector(".about-awards-card");
+    const gap = Number.parseFloat(getComputedStyle(awardsTrack).columnGap || getComputedStyle(awardsTrack).gap) || 0;
+    const amount = card ? card.getBoundingClientRect().width + gap : awardsTrack.clientWidth;
+
+    awardsTrack.scrollBy({
+      left: direction * amount,
+      behavior: "smooth",
+    });
+  };
+
+  awardsPrev.addEventListener("click", () => scrollAwards(-1));
+  awardsNext.addEventListener("click", () => scrollAwards(1));
+}
+
+const marketChips = document.querySelectorAll(".about-market-chip");
+const marketModal = document.getElementById("about-market-modal");
+const marketModalTitle = document.getElementById("about-market-modal-title");
+const marketModalCount = document.querySelector(".about-market-modal-count");
+const marketModalPlaces = document.querySelector(".about-market-modal-places");
+const marketCloseTriggers = document.querySelectorAll("[data-market-close]");
+
+const exportMarkets = {
+  japan: {
+    name: "Japan",
+    stores: [
+      { name: "Tokyo", query: "Tokyo, Japan" },
+      { name: "Osaka", query: "Osaka, Japan" },
+    ],
+  },
+  russia: {
+    name: "Russia",
+    stores: [{ name: "Moscow", query: "Moscow, Russia" }],
+  },
+  netherlands: {
+    name: "Netherlands",
+    stores: [
+      { name: "Rotterdam", query: "Rotterdam, Netherlands" },
+      { name: "Amsterdam", query: "Amsterdam, Netherlands" },
+    ],
+  },
+  france: {
+    name: "France",
+    stores: [{ name: "Paris", query: "Paris, France" }],
+  },
+  austria: {
+    name: "Austria",
+    stores: [{ name: "Vienna", query: "Vienna, Austria" }],
+  },
+  spain: {
+    name: "Spain",
+    stores: [
+      { name: "Madrid", query: "Madrid, Spain" },
+      { name: "Barcelona", query: "Barcelona, Spain" },
+    ],
+  },
+};
+
+const buildMapsUrl = (query) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+
+if (marketChips.length && marketModal && marketModalTitle && marketModalCount && marketModalPlaces) {
+  let lastFocusedMarket = null;
+
+  const closeMarketModal = () => {
+    marketModal.hidden = true;
+    document.body.style.overflow = "";
+    if (lastFocusedMarket) {
+      lastFocusedMarket.focus();
+    }
+  };
+
+  const openMarketModal = (marketId, button) => {
+    const market = exportMarkets[marketId];
+    if (!market) {
+      return;
+    }
+
+    const countLabel = market.stores.length === 1 ? "location" : "locations";
+    const links = market.stores
+      .map(
+        (store) =>
+          `<li><a href="${buildMapsUrl(store.query)}" target="_blank" rel="noopener noreferrer">${store.name}</a></li>`
+      )
+      .join("");
+
+    marketModalTitle.textContent = market.name;
+    marketModalCount.innerHTML = `<strong>${market.stores.length}</strong> ${countLabel}`;
+    marketModalPlaces.innerHTML = links;
+
+    lastFocusedMarket = button;
+    marketModal.hidden = false;
+    document.body.style.overflow = "hidden";
+    marketModal.querySelector(".about-market-modal-close")?.focus();
+  };
+
+  marketChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      openMarketModal(chip.dataset.market, chip);
+    });
+  });
+
+  marketCloseTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", closeMarketModal);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !marketModal.hidden) {
+      closeMarketModal();
+    }
+  });
 }
