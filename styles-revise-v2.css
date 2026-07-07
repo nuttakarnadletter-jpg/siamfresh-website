@@ -4053,9 +4053,9 @@ h1 span {
 .about-hero,
 .contact-hero {
   --page-hero-overlay:
-    radial-gradient(ellipse 44% 48% at 0% 100%, rgba(117, 229, 69, 0.16) 0%, rgba(117, 229, 69, 0.28) 34%, transparent 72%),
-    radial-gradient(ellipse 44% 48% at 100% 100%, rgba(117, 229, 69, 0.12) 0%, rgba(117, 229, 69, 0.26) 34%, transparent 72%),
-    linear-gradient(0deg, rgba(12, 56, 24, 0.67) 0%, rgba(12, 56, 24, 0.36) 46%, rgba(12, 56, 24, 0.49) 100%);
+    radial-gradient(ellipse 47% 51% at 0% 100%, rgba(117, 229, 69, 0.51) 0%, rgba(117, 229, 69, 0.30) 34%, transparent 72%),
+    radial-gradient(ellipse 47% 51% at 100% 100%, rgba(117, 229, 69, 0.47) 0%, rgba(117, 229, 69, 0.28) 34%, transparent 72%),
+    linear-gradient(0deg, rgb(0 0 0 / 71%) 0%, rgb(0 0 0 / 39%) 46%, rgba(12, 56, 24, 0.61) 100%);
   min-height: clamp(340px, 44vw, 480px);
 }
 
@@ -4079,12 +4079,17 @@ h1 span {
   object-position: center bottom;
 }
 
-.about-hero::after {
+.about-hero::after,
+.contact-hero::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: var(--page-hero-overlay);
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 47% 51% at 0% 100%, rgba(117, 229, 69, 0.51) 0%, rgba(117, 229, 69, 0.30) 34%, transparent 72%),
+    radial-gradient(ellipse 47% 51% at 100% 100%, rgba(117, 229, 69, 0.47) 0%, rgba(117, 229, 69, 0.28) 34%, transparent 72%),
+    linear-gradient(0deg, rgb(0 0 0 / 71%) 0%, rgb(0 0 0 / 39%) 46%, rgba(12, 56, 24, 0.61) 100%);
 }
 
 .about-hero-content {
@@ -6000,14 +6005,6 @@ h1 span {
   height: 100%;
   object-fit: cover;
   object-position: center center;
-}
-
-.contact-hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: var(--page-hero-overlay);
 }
 
 .contact-hero-content {
