@@ -4926,9 +4926,9 @@ h1 span {
 
 .about-quality .about-cert-static .about-cert-logo:hover,
 .about-quality .about-cert-static .about-cert-logo:focus-visible {
-  border-color: var(--green-2);
-  background: var(--green-2);
-  box-shadow: 0 6px 16px rgba(117, 229, 69, 0.2);
+  border-color: rgba(34, 135, 96, 0.32);
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(12, 56, 24, 0.12);
   transform: translateY(-3px);
 }
 
@@ -4951,40 +4951,12 @@ h1 span {
   padding: 6px;
 }
 
-.about-quality .about-cert-static .about-cert-logo-box::after {
-  content: "+";
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  color: var(--green-3);
-  font-size: 34px;
-  font-weight: 300;
-  line-height: 1;
-  opacity: 0;
-  transition: opacity 200ms ease;
-  pointer-events: none;
-}
-
-.about-quality .about-cert-static .about-cert-logo:hover .about-cert-logo-box::after,
-.about-quality .about-cert-static .about-cert-logo:focus-visible .about-cert-logo-box::after {
-  opacity: 1;
-}
-
 .about-quality .about-cert-static .about-cert-logo-box img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: center;
-  transition: opacity 200ms ease;
-}
-
-.about-quality .about-cert-static .about-cert-logo:hover .about-cert-logo-box img,
-.about-quality .about-cert-static .about-cert-logo:focus-visible .about-cert-logo-box img,
-.about-quality .about-cert-static .about-cert-logo:hover .about-cert-logo-badge .about-cert-logo-box span,
-.about-quality .about-cert-static .about-cert-logo:focus-visible .about-cert-logo-badge .about-cert-logo-box span {
-  opacity: 0;
 }
 
 .about-quality .about-cert-static .about-cert-logo-badge .about-cert-logo-box span {
@@ -4992,7 +4964,6 @@ h1 span {
   height: 80px;
   border-radius: 8px;
   font-size: 17px;
-  transition: opacity 200ms ease;
 }
 
 .about-quality .section-label {
@@ -6147,11 +6118,16 @@ h1 span {
   line-height: 1.7;
 }
 
-.contact-detail-list a {
+.contact-detail-list a,
+.contact-detail-list .contact-detail-value {
   display: inline-flex;
   color: var(--green);
   font-weight: 700;
   overflow-wrap: anywhere;
+}
+
+.contact-detail-list .contact-detail-value {
+  margin: 0;
 }
 
 .contact-form {
