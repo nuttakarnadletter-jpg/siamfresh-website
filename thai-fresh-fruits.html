@@ -50,7 +50,16 @@
 
       <nav class="main-nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
+        <div class="nav-dropdown">
+          <a href="about.html">About Us</a>
+          <div class="nav-submenu" aria-label="About submenu">
+            <a href="about.html#company-overview">Company Overview</a>
+            <a href="about.html#vision-mission">Our Vision &amp; Mission</a>
+            <a href="about.html#our-quality">Our Quality</a>
+            <a href="about.html#awards">Awards &amp; Recognition</a>
+            <a href="about.html#sustainability">Our Sustainability</a>
+          </div>
+        </div>
         <div class="nav-dropdown">
           <a class="active" href="thai-fresh-fruits.html">Products</a>
           <div class="nav-submenu" aria-label="Products submenu">
@@ -95,9 +104,6 @@
 
       <section class="fruit-detail-list" aria-label="Premium Thai fruit details">
         <article class="fruit-detail section-wrap">
-          <figure class="fruit-detail-media">
-            <img src="assets/product-premium-monthong.png" alt="Premium Monthong durian" />
-          </figure>
           <div class="fruit-detail-copy">
             <header class="fruit-detail-heading fruit-detail-heading-inline">
               <p class="section-label">Thailand's Leading Export Durian</p>
@@ -112,33 +118,70 @@
             <p>
               At Siam Fresh, our Premium Monthong is sourced from carefully selected orchards with trees aged over 28 years. Combined with extended on-tree ripening, this allows the fruit to develop greater flavour complexity, a smoother texture, and a naturally richer taste.
             </p>
+            <a class="pill-button" href="contact.html">Inquire for Export</a>
           </div>
-          <div class="fruit-info-grid">
-            <div class="fruit-info-card">
-              <h3>Why It Stands Out</h3>
-              <p>Quality begins long before harvest. At Siam Fresh, premium durian is selected through a controlled process that begins in the orchard and continues throughout the supply chain.</p>
-              <p>Every batch is monitored through precise quality control measures, with Dry Matter exceeding 32% serving as a key benchmark for premium Monthong selection.</p>
-            </div>
-            <div class="fruit-info-card">
-              <h3>A Naturally Nourishing Fruit</h3>
-              <p>Beyond its distinctive flavour, durian is a naturally nourishing fruit rich in dietary fibre, Vitamin C, B vitamins, and potassium.</p>
-              <p>Per 100g: 147 kcal Energy • 27–28g Carbohydrates • 3.8g Fibre • 5g Healthy Plant Fats</p>
-            </div>
-          </div>
-          <div class="fruit-season">
-            <h3>Harvest Season</h3>
-            <dl>
-              <div>
-                <dt>Eastern Thailand (Chanthaburi, Rayong, Trat)</dt>
-                <dd>April – June</dd>
+          <figure class="fruit-detail-media">
+            <img src="assets/product-premium-monthong.png" alt="Premium Monthong durian" />
+          </figure>
+          <div class="fruit-detail-extended">
+            <div class="fruit-detail-extended-grid">
+              <div class="fruit-detail-extended-copy">
+                <h2 class="about-quality-subtitle">Why Siam Fresh Durian Stands Out</h2>
+                <p class="section-label">Quality Begins Long Before Harvest.</p>
+                <p>
+                  At Siam Fresh, we source from orchards with durian trees aged over 28 years. Mature trees develop deeper root systems, stronger nutrient uptake, and more consistent fruit quality over time.
+                </p>
+                <p>
+                  Every batch is monitored through strict quality control measures, with Dry Matter content exceeding 32% serving as a key benchmark for premium Monthong selection.
+                </p>
+                <p>
+                  Extended on-tree ripening allows the fruit to develop richer flavour, smoother texture, and a naturally more satisfying eating experience.
+                </p>
               </div>
-              <div>
-                <dt>Southern Thailand (including Chumphon, Nakhon Si Thammarat, and other key durian-producing provinces)</dt>
-                <dd>July – September</dd>
+              <div class="fruit-detail-extended-aside">
+                <div class="fruit-harvest-card">
+                  <h3 class="about-quality-subtitle">Harvest Season</h3>
+                  <div class="fruit-harvest-table-wrap">
+                    <table class="fruit-harvest-table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Region</th>
+                          <th scope="col">Harvest Window</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Eastern Thailand<br />(Chanthaburi, Rayong, Trat)</td>
+                          <td>April – June</td>
+                        </tr>
+                        <tr>
+                          <td>Southern Thailand<br />(Chumphon, Nakhon Si Thammarat)</td>
+                          <td>July – September</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="fruit-nutrition-card">
+                  <div class="fruit-nutrition-card-head">
+                    <img src="assets/icon-leaves.svg" alt="" aria-hidden="true" />
+                    <h3>A Naturally Nourishing Fruit</h3>
+                  </div>
+                  <p>Beyond its distinctive flavour, durian is a naturally nourishing fruit rich in dietary fibre, Vitamin C, B vitamins, and potassium. As a natural source of energy, it offers both indulgence and nutritional value in every serving.</p>
+                  <div class="fruit-nutrition-facts">
+                    <p class="fruit-nutrition-facts-label"><strong>Per 100g</strong></p>
+                    <ul class="fruit-nutrition-stats">
+                      <li><strong>147 kcal</strong> Energy</li>
+                      <li><strong>27–28g</strong> Carbohydrates</li>
+                      <li><strong>3.8g</strong> Fibre</li>
+                      <li><strong>5g</strong> Healthy Plant Fats</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-            </dl>
+            </div>
+            <p class="fruit-detail-quote">“Premium Thai Durian. Selected Beyond Standard.”</p>
           </div>
-          <p class="fruit-tagline">Premium Thai Durian. Selected Beyond Standard.</p>
         </article>
 
         <article class="fruit-detail fruit-detail-reverse section-wrap">
