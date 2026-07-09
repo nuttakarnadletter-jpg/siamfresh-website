@@ -4367,7 +4367,6 @@ h1 span {
   font-size: 10.5px;
   font-weight: 800;
   line-height: 1.15;
-  text-transform: uppercase;
 }
 
 .about-global {
@@ -6575,6 +6574,16 @@ html:has(body.fruit-page) {
   font-size: clamp(15px, 1.45vw, 18px);
   line-height: 1.5;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.34);
+}
+
+.product-hero-content p.product-hero-lead {
+  max-width: none;
+}
+
+@media (min-width: 981px) {
+  .product-hero-content p.product-hero-lead {
+    white-space: nowrap;
+  }
 }
 
 .fruit-intro {
