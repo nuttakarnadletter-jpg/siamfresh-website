@@ -442,3 +442,215 @@ if (marketChips.length && marketModal && marketModalTitle && marketModalCount &&
     }
   });
 }
+
+const fruitStickySections = document.querySelectorAll(".fruit-detail-sticky");
+let scheduleFruitStickyUpdate = () => {};
+
+if (fruitStickySections.length) {
+  const fruitStickyMq = window.matchMedia("(max-width: 980px)");
+
+  const getFruitStickyTop = () => {
+    const header = document.querySelector(".site-header");
+    const headerHeight = header ? header.getBoundingClientRect().height : 78;
+    return Math.round(headerHeight + 18);
+  };
+
+  const getFruitStickyTarget = (section) =>
+    section.querySelector(".fruit-detail-sticky-media .fruit-detail-media-slider")
+    || section.querySelector(".fruit-detail-sticky-media > .fruit-detail-media");
+
+  const resetFruitStickyMedia = (media) => {
+    media.classList.remove("is-fixed", "is-pinned-bottom");
+    media.style.removeProperty("--fruit-sticky-top");
+    media.style.removeProperty("--fruit-sticky-left");
+    media.style.removeProperty("--fruit-sticky-width");
+  };
+
+  const updateFruitStickySection = (section) => {
+    const column = section.querySelector(".fruit-detail-sticky-media");
+    const media = getFruitStickyTarget(section);
+    if (!column || !media) {
+      return;
+    }
+
+    if (fruitStickyMq.matches) {
+      column.classList.remove("has-js-sticky");
+      resetFruitStickyMedia(media);
+      return;
+    }
+
+    column.classList.add("has-js-sticky");
+
+    const stickyTop = getFruitStickyTop();
+    const columnRect = column.getBoundingClientRect();
+    const mediaHeight = media.getBoundingClientRect().height;
+
+    media.style.setProperty("--fruit-sticky-top", `${stickyTop}px`);
+
+    if (columnRect.top > stickyTop) {
+      resetFruitStickyMedia(media);
+      return;
+    }
+
+    if (columnRect.bottom <= stickyTop + mediaHeight) {
+      media.classList.remove("is-fixed");
+      media.classList.add("is-pinned-bottom");
+      media.style.removeProperty("--fruit-sticky-left");
+      media.style.removeProperty("--fruit-sticky-width");
+      return;
+    }
+
+    media.classList.add("is-fixed");
+    media.classList.remove("is-pinned-bottom");
+    media.style.setProperty("--fruit-sticky-left", `${columnRect.left}px`);
+    media.style.setProperty("--fruit-sticky-width", `${columnRect.width}px`);
+  };
+
+  let fruitStickyTicking = false;
+
+  scheduleFruitStickyUpdate = () => {
+    if (fruitStickyTicking) {
+      return;
+    }
+
+    fruitStickyTicking = true;
+    window.requestAnimationFrame(() => {
+      fruitStickySections.forEach(updateFruitStickySection);
+      fruitStickyTicking = false;
+    });
+  };
+
+  window.addEventListener("scroll", scheduleFruitStickyUpdate, { passive: true });
+  window.addEventListener("resize", scheduleFruitStickyUpdate);
+  fruitStickyMq.addEventListener("change", scheduleFruitStickyUpdate);
+
+  fruitStickySections.forEach((section) => {
+    section.querySelectorAll(".fruit-detail-sticky-media img").forEach((image) => {
+      if (!image.complete) {
+        image.addEventListener("load", scheduleFruitStickyUpdate, { once: true });
+      }
+    });
+  });
+
+  scheduleFruitStickyUpdate();
+}
+
+const fruitMediaSliders = document.querySelectorAll(".fruit-detail-media-slider");
+
+if (fruitMediaSliders.length) {
+  const fruitAutoplayMq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const FRUIT_AUTOPLAY_DELAY = 4500;
+
+  fruitMediaSliders.forEach((slider) => {
+    const slides = [...slider.querySelectorAll(".fruit-detail-media-track .fruit-detail-media")];
+    const prevButton = slider.querySelector(".fruit-media-prev");
+    const nextButton = slider.querySelector(".fruit-media-next");
+    const dotsContainer = slider.querySelector(".fruit-media-dots");
+    const controls = slider.querySelector(".fruit-detail-media-controls");
+    let activeIndex = slides.findIndex((slide) => slide.classList.contains("is-active"));
+    let autoplayTimer = null;
+
+    if (activeIndex < 0) {
+      activeIndex = 0;
+      slides[0]?.classList.add("is-active");
+    }
+
+    if (slides.length <= 1) {
+      controls?.remove();
+      return;
+    }
+
+    const stopAutoplay = () => {
+      if (autoplayTimer) {
+        window.clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    };
+
+    const startAutoplay = () => {
+      stopAutoplay();
+
+      if (fruitAutoplayMq.matches || document.hidden) {
+        return;
+      }
+
+      autoplayTimer = window.setInterval(() => {
+        goToSlide(activeIndex + 1);
+      }, FRUIT_AUTOPLAY_DELAY);
+    };
+
+    const goToSlide = (index) => {
+      activeIndex = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("is-active", slideIndex === activeIndex);
+      });
+
+      dotsContainer?.querySelectorAll(".fruit-media-dot").forEach((dot, dotIndex) => {
+        const isActive = dotIndex === activeIndex;
+        dot.classList.toggle("is-active", isActive);
+        dot.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+
+      scheduleFruitStickyUpdate();
+    };
+
+    const restartAutoplay = () => {
+      stopAutoplay();
+      startAutoplay();
+    };
+
+    slides.forEach((_, slideIndex) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = `fruit-media-dot${slideIndex === activeIndex ? " is-active" : ""}`;
+      dot.setAttribute("role", "tab");
+      dot.setAttribute("aria-label", `Show image ${slideIndex + 1}`);
+      dot.setAttribute("aria-selected", slideIndex === activeIndex ? "true" : "false");
+      dot.addEventListener("click", () => {
+        goToSlide(slideIndex);
+        restartAutoplay();
+      });
+      dotsContainer?.appendChild(dot);
+    });
+
+    prevButton?.addEventListener("click", () => {
+      goToSlide(activeIndex - 1);
+      restartAutoplay();
+    });
+
+    nextButton?.addEventListener("click", () => {
+      goToSlide(activeIndex + 1);
+      restartAutoplay();
+    });
+
+    slider.addEventListener("mouseenter", stopAutoplay);
+    slider.addEventListener("mouseleave", startAutoplay);
+    slider.addEventListener("focusin", stopAutoplay);
+    slider.addEventListener("focusout", (event) => {
+      if (!slider.contains(event.relatedTarget)) {
+        startAutoplay();
+      }
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        stopAutoplay();
+        return;
+      }
+
+      startAutoplay();
+    });
+
+    fruitAutoplayMq.addEventListener("change", () => {
+      if (fruitAutoplayMq.matches) {
+        stopAutoplay();
+        return;
+      }
+
+      startAutoplay();
+    });
+
+    startAutoplay();
+  });
+}
