@@ -4267,6 +4267,14 @@ h1 span {
   line-height: 1.5;
 }
 
+.about-intro-lead {
+  width: min(100%, 920px);
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
 @media (min-width: 981px) {
   .about-intro-highlight-line {
     white-space: nowrap;
@@ -4284,8 +4292,8 @@ h1 span {
 .about-intro-copy {
   display: grid;
   gap: 20px;
-  align-content: start;
-  align-self: start;
+  align-content: center;
+  align-self: center;
   max-width: 920px;
   padding-right: 32px;
 }
@@ -4799,6 +4807,7 @@ h1 span {
 }
 
 .about-vm-panel-mission > p {
+  max-width: 34ch;
   color: rgba(12, 56, 24, 0.82);
 }
 
@@ -5579,7 +5588,7 @@ h1 span {
 .about-sustainability-intro {
   display: grid;
   gap: 12px;
-  max-width: 920px;
+  max-width: 760px;
   margin: 18px auto 0;
   text-align: center;
 }
