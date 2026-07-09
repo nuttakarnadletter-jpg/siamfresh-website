@@ -4186,7 +4186,8 @@ h1 span {
     linear-gradient(0deg, rgb(0 0 0 / 71%) 0%, rgb(0 0 0 / 39%) 46%, rgba(12, 56, 24, 0.61) 100%);
 }
 
-.about-hero::after {
+.about-hero::after,
+.contact-hero::after {
   background:
     radial-gradient(ellipse 47% 51% at 0% 100%, rgba(117, 229, 69, 0.38) 0%, rgba(117, 229, 69, 0.21) 34%, transparent 72%),
     radial-gradient(ellipse 47% 51% at 100% 100%, rgba(117, 229, 69, 0.36) 0%, rgba(117, 229, 69, 0.20) 34%, transparent 72%),
@@ -6242,6 +6243,11 @@ h1 span {
   overflow-wrap: anywhere;
 }
 
+.contact-phone-links {
+  display: grid;
+  justify-items: start;
+}
+
 .contact-detail-list .contact-detail-value {
   margin: 0;
 }
@@ -6301,7 +6307,7 @@ h1 span {
   border-radius: 6px;
   padding: 10px 14px;
   color: var(--ink);
-  background: #efefef;
+  background: #f6f7f6;
   font: inherit;
   font-weight: 400;
   outline: none;
@@ -6339,7 +6345,7 @@ h1 span {
 .contact-form select:focus,
 .contact-form textarea:focus {
   border-color: var(--green);
-  background: #f5f5f5;
+  background: #fbfcfb;
   box-shadow: 0 0 0 4px rgba(34, 135, 96, 0.12);
 }
 

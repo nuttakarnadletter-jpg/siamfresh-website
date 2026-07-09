@@ -12,11 +12,11 @@
     <meta property="og:title" content="Contact Us | Siam Fresh" />
     <meta property="og:description" content="Reach Siam Fresh for domestic, export, and general inquiries. Located at Krungthep Kritha 37 Alley, Bangkok, Thailand." />
     <meta property="og:url" content="https://www.siamfresh.com/contact.html" />
-    <meta property="og:image" content="https://www.siamfresh.com/assets/banner-contact6.jpg" />
+    <meta property="og:image" content="https://www.siamfresh.com/assets/banner-contact7.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Contact Us | Siam Fresh" />
     <meta name="twitter:description" content="Reach Siam Fresh for domestic, export, and general inquiries. Located at Krungthep Kritha 37 Alley, Bangkok, Thailand." />
-    <meta name="twitter:image" content="https://www.siamfresh.com/assets/banner-contact6.jpg" />
+    <meta name="twitter:image" content="https://www.siamfresh.com/assets/banner-contact7.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&family=Prompt:wght@400;500;600;700;800;900&family=Rokkitt:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -30,7 +30,7 @@
           "@type": "Organization",
           "name": "Siam Fresh Enterprise Co., Ltd",
           "email": "sales@siamfresh.com",
-          "telephone": "+6623684319",
+          "telephone": ["+6623684319", "+6623684320"],
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "9 Krungthep Kritha 37 Alley, Thap Chang, Saphan Sung",
@@ -96,8 +96,8 @@
       <section class="contact-hero" aria-labelledby="contact-hero-title">
         <div class="contact-hero-media" aria-hidden="true">
           <img
-            src="assets/banner-contact6.jpg?v=20260707-4"
-            srcset="assets/banner-contact6.jpg?v=20260707-4 1920w"
+            src="assets/banner-contact7.jpg?v=20260709-1"
+            srcset="assets/banner-contact7.jpg?v=20260709-1 1920w"
             sizes="100vw"
             alt=""
             decoding="async"
@@ -107,7 +107,7 @@
         <div class="contact-hero-content section-wrap">
           <p class="section-label">Get in Touch</p>
           <h1 id="contact-hero-title">Contact Us</h1>
-          <p>Connect with our team for domestic, export, and general inquiries.</p>
+          <p>Connect with our team for domestic, export, and partnership inquiries.</p>
         </div>
       </section>
 
@@ -137,9 +137,10 @@
                   <path d="M8 5.5 10.3 10c.3.6.2 1.2-.2 1.7l-1.1 1.1c1.2 2.1 2.9 3.8 5 5l1.1-1.1c.5-.4 1.1-.5 1.7-.2l4.5 2.3c.6.3.9.9.7 1.5-.4 1.5-1.8 2.5-3.3 2.4C9.5 22.1 1.9 14.5 1.3 5.3 1.2 3.8 2.2 2.4 3.7 2c.6-.2 1.2.1 1.5.7L8 5.5Z" />
                 </svg>
               </span>
-              <div>
+              <div class="contact-phone-links">
                 <h3>Telephone</h3>
-                <a href="tel:+662368431920">+6623684319-20</a>
+                <a href="tel:+6623684319">+66 2 368 4319</a>
+                <a href="tel:+6623684320">+66 2 368 4320</a>
               </div>
             </article>
             <article>
@@ -151,7 +152,7 @@
               </span>
               <div>
                 <h3>Business Hours</h3>
-                <p class="contact-detail-value">Monday-Saturday 08:30am-6:00pm</p>
+                <p class="contact-detail-value">Monday–Saturday, 8:30 AM–6:00 PM</p>
               </div>
             </article>
           </div>
@@ -169,39 +170,44 @@
 
       <section class="contact-form-section" aria-labelledby="contact-form-title">
         <div class="contact-form-heading">
-          <h2 id="contact-form-title">Contact Form</h2>
-          <p>Please complete the form below to contact us. Our team will review your inquiry and get back to you as soon as possible.</p>
+          <h2 id="contact-form-title">Connect with Our Team</h2>
+          <p>Share how we can assist you, and we’ll be in touch shortly with the support you need.</p>
         </div>
 
         <form class="contact-form" action="mailto:sales@siamfresh.com" method="post" enctype="text/plain">
           <label>
-            <span>Contact Name</span>
-            <input type="text" name="Contact Name" autocomplete="name" required />
+            <span>Full Name</span>
+            <input type="text" name="Full Name" autocomplete="name" required />
           </label>
 
           <label>
-            <span>Country</span>
-            <input type="text" name="Country" autocomplete="country-name" required />
+            <span>Country / Region</span>
+            <input type="text" name="Country / Region" autocomplete="country-name" required />
           </label>
 
           <label>
-            <span>Email</span>
-            <input type="email" name="Email" autocomplete="email" required />
+            <span>Email Address</span>
+            <input type="email" name="Email Address" autocomplete="email" required />
+          </label>
+
+          <label>
+            <span>Phone Number</span>
+            <input type="tel" name="Phone Number" autocomplete="tel" required />
           </label>
 
           <label class="contact-select-field">
-            <span>Type</span>
-            <select name="Type" required>
+            <span>Inquiry Type</span>
+            <select name="Inquiry Type" required>
               <option value="">Please select</option>
-              <option value="Domestic Customer">Domestic Customer</option>
-              <option value="Export Customer">Export Customer</option>
-              <option value="Others">Others</option>
+              <option value="Domestic Inquiry">Domestic Inquiry</option>
+              <option value="Export Inquiry">Export Inquiry</option>
+              <option value="General Inquiry">General Inquiry</option>
             </select>
           </label>
 
           <label class="contact-form-wide">
-            <span>Content of inquiry</span>
-            <textarea name="Content of inquiry" rows="6" required></textarea>
+            <span>Message</span>
+            <textarea name="Message" rows="6" required></textarea>
           </label>
 
           <button class="pill-button" type="submit">Submit Inquiry</button>
@@ -232,8 +238,9 @@
 
         <section class="footer-contact" aria-label="Contact">
           <h2>Contact Us</h2>
-          <p>Siam Fresh Enterprise Company Limited<br />9 Krungthep Kritha 37 Alley, Thap Chang, Saphan Sung, Bangkok THAILAND 10250</p>
-          <a href="tel:+662368431920">+6623684319-20</a>
+          <p>Siam Fresh Enterprise Company Limited<br />9 Krungthep Kritha 37 (Yeak 4/1),<br />Kwaeng Thap Chang, Khet Sapthan Sung,<br />Bangkok 10250 Thailand.</p>
+          <a href="tel:+6623684319">+66 2 368 4319</a>
+          <a href="tel:+6623684320">+66 2 368 4320</a>
           <a href="mailto:sales@siamfresh.com">sales@siamfresh.com</a>
         </section>
       </div>
