@@ -4367,6 +4367,7 @@ h1 span {
   font-size: 10.5px;
   font-weight: 800;
   line-height: 1.15;
+  text-transform: none;
 }
 
 .about-global {
