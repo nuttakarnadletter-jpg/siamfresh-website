@@ -74,6 +74,98 @@ if (document.body.dataset.auth === "off" || !isPreviewWorkspace()) {
   buildLoginGate();
 }
 
+const siteHeader = document.querySelector(".site-header");
+const mainNav = document.querySelector(".main-nav");
+
+if (siteHeader && mainNav) {
+  const navMq = window.matchMedia("(max-width: 1100px)");
+  const navDropdowns = [...mainNav.querySelectorAll(".nav-dropdown")];
+  const navToggle = document.createElement("button");
+  navToggle.className = "nav-toggle";
+  navToggle.type = "button";
+  navToggle.setAttribute("aria-label", "Open menu");
+  navToggle.setAttribute("aria-expanded", "false");
+  if (!mainNav.id) {
+    mainNav.id = "primary-navigation";
+  }
+  navToggle.setAttribute("aria-controls", mainNav.id);
+  navToggle.innerHTML = `
+    <img class="nav-toggle-icon nav-toggle-icon-menu" src="assets/icon-menu.svg" alt="" aria-hidden="true" />
+    <img class="nav-toggle-icon nav-toggle-icon-close" src="assets/icon-close.svg" alt="" aria-hidden="true" />
+  `;
+
+  const headerActions = siteHeader.querySelector(".header-actions");
+  if (headerActions) {
+    headerActions.before(navToggle);
+  } else {
+    siteHeader.appendChild(navToggle);
+  }
+
+  const setNavOpen = (isOpen) => {
+    siteHeader.classList.toggle("is-nav-open", isOpen);
+    document.body.classList.toggle("is-nav-open", isOpen);
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+    navToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    if (!isOpen) {
+      navDropdowns.forEach((dropdown) => {
+        dropdown.classList.remove("is-submenu-open");
+        dropdown.querySelector(":scope > a")?.setAttribute("aria-expanded", "false");
+      });
+    }
+  };
+
+  navToggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    setNavOpen(!siteHeader.classList.contains("is-nav-open"));
+  });
+
+  navDropdowns.forEach((dropdown) => {
+    const dropdownLink = dropdown.querySelector(":scope > a");
+    if (!dropdownLink) return;
+
+    dropdownLink.setAttribute("aria-expanded", "false");
+
+    dropdownLink.addEventListener("click", (event) => {
+      if (!navMq.matches) return;
+
+      event.preventDefault();
+      const shouldOpen = !dropdown.classList.contains("is-submenu-open");
+
+      navDropdowns.forEach((item) => {
+        item.classList.remove("is-submenu-open");
+        item.querySelector(":scope > a")?.setAttribute("aria-expanded", "false");
+      });
+
+      dropdown.classList.toggle("is-submenu-open", shouldOpen);
+      dropdownLink.setAttribute("aria-expanded", String(shouldOpen));
+    });
+  });
+
+  mainNav.addEventListener("click", (event) => {
+    const link = event.target.closest("a");
+    if (!link) return;
+
+    if (link.closest(".nav-submenu") || !link.closest(".nav-dropdown")) {
+      setNavOpen(false);
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!navMq.matches || !siteHeader.classList.contains("is-nav-open")) return;
+    if (!siteHeader.contains(event.target)) {
+      setNavOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setNavOpen(false);
+    }
+  });
+
+  navMq.addEventListener("change", () => setNavOpen(false));
+}
+
 const reviseHeroSlides = document.querySelectorAll(".revise-hero-media img");
 const reviseHeroButtons = document.querySelectorAll(".revise-hero-controls button");
 const reviseHeroPrev = document.querySelector(".revise-hero-prev");

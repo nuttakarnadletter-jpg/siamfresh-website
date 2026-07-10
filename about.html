@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&family=Prompt:wght@400;500;600;700;800;900&family=Rokkitt:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles-revise-v2.css?v=20260709-5" />
+    <link rel="stylesheet" href="styles-revise-v2.css?v=20260710-13" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -85,6 +85,17 @@
     </header>
 
     <main>
+      <!--
+        คู่มือแก้ไขหน้า About Us
+        1) ข้อความ — แก้ในแท็ก <h1>, <h2>, <p>, <figcaption>
+        2) รูป — เปลี่ยนไฟล์ใน src="assets/ชื่อไฟล์"
+        3) รางวัล — คัดลอก/ลบบล็อก <figure class="about-awards-card"> ทั้งก้อน
+           เรียงจากใหม่ไปเก่า (รางวัลล่าสุดอยู่ก่อน)
+        4) ตัวเลขประสบการณ์ — แก้ใน <strong>22+</strong> ใต้รูป Company Overview
+        หมายเหตุ: ไม่ต้องแก้ class หรือ id ของ section ถ้าไม่จำเป็น
+      -->
+
+      <!-- Hero -->
       <section class="about-hero" aria-labelledby="about-hero-title">
         <div class="about-hero-media" aria-hidden="true">
           <img src="assets/banner-about5-live-20260709.jpg" alt="" />
@@ -96,12 +107,12 @@
         </div>
       </section>
 
+      <!-- Company Overview -->
       <section class="about-intro section-wrap" id="company-overview" aria-labelledby="company-overview-title">
         <div class="about-intro-heading center-heading">
           <h2 id="company-overview-title">Company Overview</h2>
           <p class="about-intro-highlight">
-            <span class="about-intro-highlight-line">Siam Fresh Enterprise was founded on a simple belief: Thailand produces some of the world's</span>
-            <span class="about-intro-highlight-line">finest tropical fruits, and those fruits deserve to be recognised for their true value.</span>
+            Siam Fresh Enterprise was founded on a simple belief: Thailand produces some of the world's finest tropical fruits, and those fruits deserve to be recognised for their true value.
           </p>
         </div>
         <div class="about-intro-body">
@@ -126,6 +137,7 @@
         </div>
       </section>
 
+      <!-- Markets We Serve -->
       <section class="about-global" aria-labelledby="global-reach-title">
         <div class="about-global-inner section-wrap">
           <div class="center-heading">
@@ -162,12 +174,13 @@
         </div>
       </section>
 
+      <!-- Vision & Mission -->
       <section class="about-vm" id="vision-mission" aria-label="Vision and Mission">
         <div class="about-vm-grid">
           <article class="about-vm-panel about-vm-panel-vision">
             <div class="about-vm-card-head">
               <span class="about-vm-icon" aria-hidden="true">
-                <img src="assets/icon-vision.svg?v=20260706-1" alt="" />
+                <img src="assets/icon-vision.svg" alt="" />
               </span>
               <h2>Our Vision</h2>
             </div>
@@ -184,7 +197,7 @@
           <article class="about-vm-panel about-vm-panel-mission">
             <div class="about-vm-card-head">
               <span class="about-vm-icon" aria-hidden="true">
-                <img src="assets/icon-mission.svg?v=20260707-1" alt="" />
+                <img src="assets/icon-mission.svg" alt="" />
               </span>
               <h2>Our Mission</h2>
             </div>
@@ -195,6 +208,7 @@
         </div>
       </section>
 
+      <!-- Our Quality -->
       <section class="about-quality" id="our-quality" aria-labelledby="quality-title">
         <div class="about-quality-intro section-wrap">
           <div class="center-heading">
@@ -254,14 +268,14 @@
                 <div class="about-qc-grid">
               <article>
                 <div class="about-qc-card-head">
-                  <span class="line-icon"><img src="assets/icon-qc-traceability.svg?v=20260707-2" alt="" /></span>
+                  <span class="line-icon"><img src="assets/icon-qc-traceability.svg" alt="" /></span>
                   <h4>Traceability Management System</h4>
                 </div>
                 <p>Enables complete product traceability from orchard to shipment for transparency and accountability.</p>
               </article>
               <article>
                 <div class="about-qc-card-head">
-                  <span class="line-icon"><img src="assets/icon-qc-residue.svg?v=20260707-2" alt="" /></span>
+                  <span class="line-icon"><img src="assets/icon-qc-residue.svg" alt="" /></span>
                   <h4>Residue Monitoring Program</h4>
                 </div>
                 <p>Regular testing and monitoring to ensure compliance with international residue standards and importing country requirements.</p>
@@ -282,6 +296,7 @@
         </div>
       </section>
 
+      <!-- Awards & Recognition -->
       <section class="about-awards" id="awards" aria-labelledby="awards-title">
         <div class="about-awards-inner section-wrap">
           <div class="center-heading">
@@ -291,6 +306,7 @@
           <div class="about-awards-carousel" aria-label="Awards slider">
             <button class="about-awards-prev" type="button" aria-label="Previous award">‹</button>
             <div class="about-awards-track">
+              <!-- รางวัล: เรียงจากใหม่ไปเก่า -->
               <figure class="about-awards-card">
                 <div class="about-awards-media">
                   <img src="assets/2025.jpg" alt="Prime Minister's Export Award 2025 Best Thai Brand" />
@@ -299,33 +315,33 @@
               </figure>
               <figure class="about-awards-card">
                 <div class="about-awards-media">
-                  <img src="assets/award-sme-national-2025.png" alt="17th SME National Awards 2025" />
+                  <img src="assets/award-sme-national-2025.png" alt="17TH SME NATIONAL AWARDS 2025 - OUTSTANDING SME" />
                 </div>
-                <figcaption>17th SME National Awards 2025</figcaption>
+                <figcaption>17TH SME NATIONAL AWARDS 2025 - OUTSTANDING SME</figcaption>
               </figure>
               <figure class="about-awards-card">
                 <div class="about-awards-media">
-                  <img src="assets/award-sme-national-2024.png" alt="16th SME National Awards 2024" />
+                  <img src="assets/award-msme-women-excellence-2024.png" alt="17th SME National Awards 2025 - SME Woman Entrepreneur Excellence. 17TH SME NATIONAL AWARDS 2025 - OUTSTANDING SME" />
                 </div>
-                <figcaption>16th SME National Awards 2024</figcaption>
+                <figcaption>17th SME National Awards 2025 - SME Woman Entrepreneur Excellence<br />17TH SME NATIONAL AWARDS 2025 - OUTSTANDING SME</figcaption>
               </figure>
               <figure class="about-awards-card">
                 <div class="about-awards-media">
-                  <img src="assets/award-msme-national-2024.png" alt="16th MSME National Awards 2024" />
+                  <img src="assets/award-sme-national-2024.png" alt="16TH SME NATIONAL AWARDS 2024 - MANUFACTURING SECTOR" />
                 </div>
-                <figcaption>16th MSME National Awards 2024</figcaption>
+                <figcaption>16TH SME NATIONAL AWARDS 2024 - MANUFACTURING SECTOR</figcaption>
               </figure>
               <figure class="about-awards-card">
                 <div class="about-awards-media">
-                  <img src="assets/award-msme-hyper-growth-2024.png" alt="Better Economic Hyper Growth Engine Award 2024" />
+                  <img src="assets/award-msme-national-2024.png" alt="16TH SME NATIONAL AWARDS THE BEST SME NATIONAL AWARD WINNERs 2024 - FOOD &amp; BEVERAGE BUSINESS CATEGORY" />
                 </div>
-                <figcaption>Better Economic Hyper Growth Engine 2024</figcaption>
+                <figcaption>16TH SME NATIONAL AWARDS THE BEST SME NATIONAL AWARD WINNERs 2024 - FOOD &amp; BEVERAGE BUSINESS CATEGORY</figcaption>
               </figure>
               <figure class="about-awards-card">
                 <div class="about-awards-media">
-                  <img src="assets/award-msme-women-excellence-2024.png" alt="SME Women Entrepreneur Excellence Award 2024" />
+                  <img src="assets/award-msme-hyper-growth-2024.png" alt="16th SME National Awards 2024 - Better Economic hyper growth engine - Global Trader Category" />
                 </div>
-                <figcaption>SME Women Entrepreneur Excellence 2024</figcaption>
+                <figcaption>16th SME National Awards 2024 - Better Economic hyper growth engine - Global Trader Category</figcaption>
               </figure>
               <figure class="about-awards-card">
                 <div class="about-awards-media">
@@ -357,6 +373,7 @@
         </div>
       </section>
 
+      <!-- Sustainability -->
       <section class="about-sustainability" id="sustainability" aria-labelledby="sustainability-title">
         <div class="about-sustainability-inner section-wrap">
           <div class="center-heading">
@@ -456,6 +473,6 @@
         <a href="contact.html">Privacy Policy</a>
       </div>
     </footer>
-    <script src="script-revise-v2.js?v=20260706-10"></script>
+    <script src="script-revise-v2.js?v=20260710-4"></script>
   </body>
 </html>
