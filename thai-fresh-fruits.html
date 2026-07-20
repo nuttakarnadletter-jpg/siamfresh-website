@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&family=Prompt:wght@400;500;600;700;800;900&family=Rokkitt:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles-revise-v2.css?v=20260713-3" />
+    <link rel="stylesheet" href="styles-revise-v2.css?v=20260720-20" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -34,9 +34,14 @@
             { "@type": "ListItem", "position": 1, "name": "Premium Monthong" },
             { "@type": "ListItem", "position": 2, "name": "Premium Mangosteen" },
             { "@type": "ListItem", "position": 3, "name": "Premium Nam Dok Mai Mango" },
-            { "@type": "ListItem", "position": 4, "name": "Fresh Coconut" },
-            { "@type": "ListItem", "position": 5, "name": "Dragon Fruit" },
-            { "@type": "ListItem", "position": 6, "name": "Passion Fruit" }
+            { "@type": "ListItem", "position": 4, "name": "Premium Maha Chanok Mango" },
+            { "@type": "ListItem", "position": 5, "name": "Premium Rambutan" },
+            { "@type": "ListItem", "position": 6, "name": "Premium Longan" },
+            { "@type": "ListItem", "position": 7, "name": "Premium Pomelo" },
+            { "@type": "ListItem", "position": 8, "name": "Premium Jackfruit" },
+            { "@type": "ListItem", "position": 9, "name": "Premium Dragon Fruit" },
+            { "@type": "ListItem", "position": 10, "name": "Premium Guava" },
+            { "@type": "ListItem", "position": 11, "name": "Premium Passion Fruit" }
           ]
         }
       }
@@ -99,6 +104,8 @@
         3) สไลด์รูป — คัดลอก/ลบบล็อก <figure class="fruit-detail-media"> ทั้งก้อน
            รูปแรกต้องมี class="fruit-detail-media is-active"
         4) ปุ่มติดต่อ — แก้ href ใน class="pill-button"
+        5) Fruit Calendar — แก้สถานะเดือนด้วย class: is-peak / is-available / is-off
+        6) สินค้าเพิ่ม — การ์ดใน #more-fruits (มีรูปใช้ <img>, ยังไม่มีรูปใช้ .fruit-product-fallback)
         หมายเหตุ: ไม่ต้องแก้ class หรือโครงสร้าง HTML ถ้าไม่จำเป็น
       -->
 
@@ -424,6 +431,281 @@
             </div>
           </div>
         </article>
+      </section>
+
+      <!-- More Premium Fruits -->
+      <section class="fruit-grid-section section-wrap" id="more-fruits" aria-labelledby="more-fruits-title">
+        <div class="center-heading">
+          <p class="section-label">Our Range</p>
+          <h2 id="more-fruits-title">More Premium Thai Fruits</h2>
+          <p>Export-ready varieties selected for flavour, appearance, and consistent supply.</p>
+        </div>
+        <div class="fruit-product-grid">
+          <article class="fruit-product-card" id="fruit-maha-chanok">
+            <img src="assets/MahaChanok.jpg" alt="Premium Maha Chanok mango" />
+            <div>
+              <h3>Premium Maha Chanok Mango</h3>
+              <p>Distinctive for its vibrant colour, floral aroma, and balanced sweetness. A premium mango variety valued for its excellent eating quality and strong retail appeal across international markets.</p>
+            </div>
+          </article>
+          <article class="fruit-product-card" id="fruit-rambutan">
+            <img src="assets/Rambutan.jpg" alt="Premium rambutan" />
+            <div>
+              <h3>Premium Rambutan</h3>
+              <p>Carefully harvested for optimal sweetness, freshness, and appearance. Selected by importers for its attractive presentation and strong consumer acceptance.</p>
+            </div>
+          </article>
+          <article class="fruit-product-card" id="fruit-longan">
+            <div class="fruit-product-fallback" aria-hidden="true"><span>Longan</span></div>
+            <div>
+              <h3>Premium Longan</h3>
+              <p>Known for its translucent flesh, crisp texture, and rich honey-like sweetness. Consistently appreciated for its premium quality and broad market demand.</p>
+            </div>
+          </article>
+          <article class="fruit-product-card" id="fruit-pomelo">
+            <div class="fruit-product-fallback" aria-hidden="true"><span>Pomelo</span></div>
+            <div>
+              <h3>Premium Pomelo</h3>
+              <p>Large, juicy segments with a refreshing balance of sweetness and citrus notes. Excellent storage performance and transportation durability make it well suited for export programs.</p>
+            </div>
+          </article>
+          <article class="fruit-product-card" id="fruit-jackfruit">
+            <img src="assets/Jackfruit.jpg" alt="Premium jackfruit" />
+            <div>
+              <h3>Premium Jackfruit</h3>
+              <p>Naturally sweet with firm golden flesh and a distinctive tropical aroma. Offers high edible yield, extended shelf life, and versatile market opportunities.</p>
+            </div>
+          </article>
+          <article class="fruit-product-card" id="fruit-dragon-fruit">
+            <img src="assets/DragonFruit.jpg" alt="Premium dragon fruit" />
+            <div>
+              <h3>Premium Dragon Fruit</h3>
+              <p>Vibrant appearance paired with a crisp, refreshing taste. Favoured by retailers for its visual appeal, reliable quality, and year-round availability.</p>
+            </div>
+          </article>
+          <article class="fruit-product-card" id="fruit-guava">
+            <div class="fruit-product-fallback" aria-hidden="true"><span>Guava</span></div>
+            <div>
+              <h3>Premium Guava</h3>
+              <p>Crisp, aromatic, and naturally sweet with excellent eating quality. Selected for its freshness, consistency, and growing demand in health-conscious markets.</p>
+            </div>
+          </article>
+          <article class="fruit-product-card" id="fruit-passion-fruit">
+            <img src="assets/Passion%20Fruit.jpg" alt="Premium passion fruit" />
+            <div>
+              <h3>Premium Passion Fruit</h3>
+              <p>Intensely aromatic with a perfect balance of sweetness and tanginess. Widely valued across fresh fruit, beverage, and food processing sectors for its distinctive flavour profile.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Fruit Calendar -->
+      <section class="fruit-calendar-section" id="fruit-calendar" aria-labelledby="fruit-calendar-title">
+        <div class="section-wrap">
+          <div class="center-heading">
+            <p class="section-label">Seasonality</p>
+            <h2 id="fruit-calendar-title">Fruit Calendar</h2>
+            <p>A quick guide to Thai fruit availability across the year — designed for easy sourcing and shipment planning.</p>
+          </div>
+
+          <ul class="fruit-calendar-legend" aria-label="Season status legend">
+            <li><span class="fruit-cal-swatch is-peak" aria-hidden="true"></span><strong>Peak</strong> — Best harvest quality &amp; supply</li>
+            <li><span class="fruit-cal-swatch is-available" aria-hidden="true"></span><strong>Available</strong> — In season / good supply</li>
+            <li><span class="fruit-cal-swatch is-off" aria-hidden="true"></span><strong>Off</strong> — Out of main season</li>
+          </ul>
+
+          <div class="fruit-calendar-wrap" tabindex="0" role="region" aria-label="Fruit seasonality calendar table">
+            <table class="fruit-calendar-table">
+              <caption class="visually-hidden">Thai fruit availability by month: Peak, Available, or Off</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Fruit</th>
+                  <th scope="col">Jan</th>
+                  <th scope="col">Feb</th>
+                  <th scope="col">Mar</th>
+                  <th scope="col">Apr</th>
+                  <th scope="col">May</th>
+                  <th scope="col">Jun</th>
+                  <th scope="col">Jul</th>
+                  <th scope="col">Aug</th>
+                  <th scope="col">Sep</th>
+                  <th scope="col">Oct</th>
+                  <th scope="col">Nov</th>
+                  <th scope="col">Dec</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><span lang="th">ทุเรียน</span><span>Durian</span></th>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span lang="th">มังคุด</span><span>Mangosteen</span></th>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span lang="th">มะม่วงน้ำดอกไม้</span><span>Nam Dok Mai Mango</span></th>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span lang="th">มะม่วงมหาชนก</span><span>Maha Chanok Mango</span></th>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span lang="th">เงาะ</span><span>Rambutan</span></th>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span lang="th">ลำไย</span><span>Longan</span></th>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span lang="th">ส้มโอ</span><span>Pomelo</span></th>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span lang="th">ขนุน</span><span>Jackfruit</span></th>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span lang="th">แก้วมังกร</span><span>Dragon Fruit</span></th>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span lang="th">ฝรั่ง</span><span>Guava</span></th>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span lang="th">เสาวรส</span><span>Passion Fruit</span></th>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-peak"><span>Peak</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-available"><span>Available</span></td>
+                  <td class="is-off"><span>Off</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="fruit-calendar-note">Tip: Scan the green cells first — <strong>Peak</strong> months are ideal for volume orders and best eating quality.</p>
+        </div>
       </section>
 
       <!-- Premium Standards -->
