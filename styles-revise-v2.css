@@ -6749,6 +6749,14 @@ html:has(body.fruit-page) {
     var(--green);
 }
 
+.vegetable-page .fruit-standards {
+  margin-bottom: 0;
+  background:
+    linear-gradient(90deg, rgba(12, 56, 24, 0.38), rgba(34, 135, 96, 0.12)),
+    url("assets/bg-product.jpg") center / cover no-repeat,
+    var(--green);
+}
+
 .product-hero {
   position: relative;
   display: grid;
@@ -6857,6 +6865,10 @@ html:has(body.fruit-page) {
 
 .fruit-grid-section {
   margin-bottom: var(--product-section-space);
+}
+
+.vegetable-page #more-vegetables {
+  padding-top: 40px;
 }
 
 .fruit-detail-list {
@@ -7499,6 +7511,18 @@ html:has(body.fruit-page) {
   line-height: 1.65;
 }
 
+.fruit-standards .buyer-trust-copy {
+  max-width: 1040px;
+}
+
+.fruit-standards .buyer-trust-commitment {
+  font-weight: 700;
+}
+
+#buyer-trust .center-heading {
+  margin-bottom: 20px;
+}
+
 .fruit-standards .about-intro-highlight {
   display: flex;
   flex-direction: column;
@@ -7567,6 +7591,10 @@ html:has(body.fruit-page) {
 
 .fruit-grid-section .center-heading {
   margin-bottom: 34px;
+}
+
+#more-vegetables .center-heading h2 {
+  margin-bottom: 32px;
 }
 
 .fruit-grid-section .center-heading .section-label,
