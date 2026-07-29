@@ -7936,6 +7936,10 @@ html:has(body.fruit-page) {
   padding: 0 0 22px;
 }
 
+.market-empty-copy {
+  margin: 0 0 14px;
+}
+
 .market-retail-table-wrap {
   max-width: 100%;
   overflow-x: auto;
