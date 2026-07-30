@@ -7661,6 +7661,38 @@ html:has(body.fruit-page) {
   line-height: 1.65;
 }
 
+.fruit-packing-cta {
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+  max-width: 900px;
+  margin: 72px auto 0;
+  text-align: center;
+}
+
+.fruit-packing-cta h3 {
+  margin: 0 0 10px;
+  font-size: clamp(24px, 2.4vw, 34px);
+  line-height: 1.16;
+}
+
+.fruit-packing-cta p {
+  max-width: 840px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.68;
+}
+
+.fruit-packing-cta p + p {
+  margin-top: 8px;
+  color: var(--ink);
+}
+
+.fruit-packing-cta .pill-button {
+  white-space: nowrap;
+}
+
 .other-products-page .other-product-card > div:not(.other-product-image-placeholder) {
   display: grid;
   gap: 10px;
@@ -8357,6 +8389,11 @@ html:has(body.fruit-page) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .fruit-packing-cta {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
   .fruit-detail-extended-grid {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -8378,6 +8415,14 @@ html:has(body.fruit-page) {
 
   .fruit-product-grid {
     grid-template-columns: 1fr;
+  }
+
+  .fruit-packing-cta {
+    margin-top: 36px;
+  }
+
+  .fruit-packing-cta .pill-button {
+    width: min(100%, 260px);
   }
 
   .fruit-info-grid,
@@ -8629,7 +8674,7 @@ html:has(body.fruit-page) {
 
 .fruit-calendar-table tbody td.is-peak span {
   background:
-    linear-gradient(145deg, var(--green) 0%, var(--green) 50%, var(--green-2) 100%);
+    linear-gradient(135deg, var(--green) 0%, var(--green) 70%, #37a95f 88%, var(--green-2) 100%);
   color: #fff;
   text-shadow: 0 1px 1px rgba(12, 56, 24, 0.28);
 }
