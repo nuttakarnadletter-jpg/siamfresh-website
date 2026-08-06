@@ -6799,9 +6799,9 @@ html:has(body.fruit-page) {
 
 .other-products-page .product-hero::after {
   background:
-    radial-gradient(ellipse 47% 51% at 0% 100%, rgba(117, 229, 69, 0.22) 0%, rgba(117, 229, 69, 0.10) 34%, transparent 72%),
-    radial-gradient(ellipse 47% 51% at 100% 100%, rgba(117, 229, 69, 0.18) 0%, rgba(117, 229, 69, 0.09) 34%, transparent 72%),
-    linear-gradient(0deg, rgb(0 0 0 / 34%) 0%, rgb(0 0 0 / 14%) 46%, rgba(12, 56, 24, 0.22) 100%);
+    radial-gradient(ellipse 47% 51% at 0% 100%, rgba(117, 229, 69, 0.16) 0%, rgba(117, 229, 69, 0.06) 34%, transparent 72%),
+    radial-gradient(ellipse 47% 51% at 100% 100%, rgba(117, 229, 69, 0.12) 0%, rgba(117, 229, 69, 0.05) 34%, transparent 72%),
+    linear-gradient(0deg, rgb(0 0 0 / 22%) 0%, rgb(0 0 0 / 10%) 46%, rgba(12, 56, 24, 0.14) 100%);
 }
 
 .product-hero-content {
@@ -8167,18 +8167,18 @@ html:has(body.fruit-page) {
 }
 
 .market-retail-panel:hover {
-  border-color: var(--green);
+  border-color: #a9dc93f5;
   box-shadow: 0 4px 14px rgba(12, 56, 24, 0.08);
 }
 
 .market-retail-panel[open] {
-  border-color: var(--green);
+  border-color: #a9dc93f5;
   background: rgba(241, 251, 239, 0.45);
   box-shadow: 0 2px 8px rgba(12, 56, 24, 0.045);
 }
 
 .market-retail-panel[open]:hover {
-  border-color: var(--green);
+  border-color: #a9dc93f5;
 }
 
 .market-retail-panel summary {
@@ -8402,6 +8402,20 @@ html:has(body.fruit-page) {
   gap: 2px;
 }
 
+.domestic-purchase-inner::before {
+  content: "";
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  width: min(46vw, 460px);
+  height: min(46vw, 460px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.42) 42%, transparent 72%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
 .domestic-purchase-section .center-heading {
   display: grid;
   gap: 14px;
@@ -8427,20 +8441,20 @@ html:has(body.fruit-page) {
 
 .domestic-social-block {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(230px, 0.75fr);
-  gap: clamp(12px, 2vw, 24px);
-  align-items: center;
-  width: min(100%, 1060px);
+  grid-template-columns: 1fr;
+  gap: clamp(6px, 1vw, 10px);
+  justify-items: center;
+  width: min(100%, 920px);
   margin: 0 auto;
 }
 
 .domestic-social-side {
   display: grid;
-  gap: 18px;
+  gap: 10px;
   justify-items: stretch;
   width: 100%;
-  max-width: 320px;
-  margin: 0;
+  max-width: 820px;
+  margin: -8px auto 0;
 }
 
 .domestic-social-lead {
@@ -8449,30 +8463,33 @@ html:has(body.fruit-page) {
   font-size: clamp(15px, 1.35vw, 17px);
   font-weight: 600;
   line-height: 1.45;
-  text-align: left;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .domestic-social-links {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: stretch;
-  gap: 14px;
+  gap: 12px;
   width: 100%;
-  max-width: none;
-  margin: 0;
+  max-width: 100%;
+  margin: 0 auto;
   padding-top: 0;
 }
 
 .domestic-social-link {
   display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-  width: 100%;
+  justify-content: center;
+  gap: 8px;
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
   min-height: 52px;
-  padding: 10px 18px 10px 12px;
+  padding: 10px 14px;
   border: 1px solid rgba(34, 135, 96, 0.16);
   border-radius: 999px;
   background: #fff;
@@ -8499,44 +8516,50 @@ html:has(body.fruit-page) {
 }
 
 .domestic-social-media {
-  margin: 0;
+  margin: 0 auto;
   overflow: visible;
   border-radius: 0;
   background: transparent;
+  width: min(100%, 720px);
 }
 
 .domestic-social-media img {
   display: block;
   width: 100%;
   height: auto;
+  margin: 0 auto;
   object-fit: contain;
 }
 
 @media (max-width: 900px) {
   .domestic-social-block {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    justify-items: center;
-  }
-
-  .domestic-social-side {
-    max-width: 320px;
-    margin: 0 auto;
-    justify-items: center;
-  }
-
-  .domestic-social-lead {
-    text-align: center;
-  }
-
-  .domestic-social-links {
-    max-width: 320px;
-    margin: 0 auto;
+    gap: 8px;
   }
 
   .domestic-social-media {
-    width: min(100%, 620px);
-    order: 0;
+    width: min(100%, 580px);
+  }
+
+  .domestic-social-lead {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 720px) {
+  .domestic-social-lead {
+    white-space: normal;
+  }
+
+  .domestic-social-links {
+    flex-direction: column;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .domestic-social-link {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 10px 18px 10px 60px;
   }
 }
 
@@ -8630,18 +8653,6 @@ html:has(body.fruit-page) {
     padding: 12px 14px;
     font-size: 13px;
     overflow-wrap: normal;
-  }
-
-  .domestic-social-links {
-    display: flex;
-    flex-direction: column;
-    max-width: 320px;
-    justify-items: stretch;
-  }
-
-  .domestic-social-link {
-    justify-content: flex-start;
-    width: 100%;
   }
 }
 
