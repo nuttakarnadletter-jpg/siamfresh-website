@@ -6804,6 +6804,13 @@ html:has(body.fruit-page) {
     linear-gradient(0deg, rgb(0 0 0 / 22%) 0%, rgb(0 0 0 / 10%) 46%, rgba(12, 56, 24, 0.14) 100%);
 }
 
+.vegetable-page .product-hero::after {
+  background:
+    radial-gradient(ellipse 47% 51% at 0% 100%, rgba(117, 229, 69, 0.28) 0%, rgba(117, 229, 69, 0.12) 34%, transparent 72%),
+    radial-gradient(ellipse 47% 51% at 100% 100%, rgba(117, 229, 69, 0.22) 0%, rgba(117, 229, 69, 0.10) 34%, transparent 72%),
+    linear-gradient(0deg, rgb(0 0 0 / 48%) 0%, rgb(0 0 0 / 22%) 46%, rgba(12, 56, 24, 0.32) 100%);
+}
+
 .product-hero-content {
   position: relative;
   z-index: 2;
