@@ -44,7 +44,7 @@
           <a href="thai-fresh-fruits.html">Products</a>
           <div class="nav-submenu" aria-label="Products submenu">
             <a href="thai-fresh-fruits.html">Thai Fresh Fruits</a>
-            <a href="vegetable.html">Vegetable</a>
+            <a href="vegetables.html">Vegetables</a>
             <a href="other-products.html">Other Products</a>
             <a href="https://www.siamfresh.com/contact">Request Quotation</a>
           </div>
@@ -52,8 +52,8 @@
         <div class="nav-dropdown">
           <a class="active" href="market-presence.html">Market Presence</a>
           <div class="nav-submenu" aria-label="Market Presence submenu">
-            <a class="active" href="market-presence.html#international-partners">Our International Partners</a>
-            <a href="market-presence.html#domestic-purchase">Domestic Purchase</a>
+            <a class="active" href="market-presence.html#international-partners">International Availability</a>
+            <a href="market-presence.html#domestic-purchase">Thailand Online Store</a>
           </div>
         </div>
         <a href="contact.html">Contact Us</a>
@@ -92,8 +92,47 @@
       <section class="where-to-buy-section" id="international-partners" aria-labelledby="international-partners-title">
         <div class="where-to-buy-inner section-wrap">
           <div class="center-heading">
-            <h2 id="international-partners-title">Our International Partners</h2>
-            <p class="where-to-buy-subtitle">Retail locations for Siam Fresh products.</p>
+            <h2 id="international-partners-title">International Availability</h2>
+            <p class="where-to-buy-subtitle">Siam Fresh serves a growing network of international markets across Asia, Europe, and other regions. The locations displayed on this page represent selected publicly available retail channels only. Additional market information is available upon request.</p>
+          </div>
+
+          <div class="market-usp-strip" aria-label="Siam Fresh market strengths">
+            <article>
+              <span class="market-usp-icon" aria-hidden="true">
+                <img src="assets/icon-global-reach-world.svg" alt="" />
+              </span>
+              <div>
+                <strong>Global Reach</strong>
+                <p>Supplying quality Thai produce to customers across Asia, Europe and other regions.</p>
+              </div>
+            </article>
+            <article>
+              <span class="market-usp-icon" aria-hidden="true">
+                <img src="assets/icon-premium-quality-best-seller.svg" alt="" />
+              </span>
+              <div>
+                <strong>Premium Quality</strong>
+                <p>Carefully selected from trusted farms to ensure freshness, safety and consistency.</p>
+              </div>
+            </article>
+            <article>
+              <span class="market-usp-icon" aria-hidden="true">
+                <img src="assets/icon-trusted-partnerships.png" alt="" />
+              </span>
+              <div>
+                <strong>Trusted Partnerships</strong>
+                <p>Working with leading importers, distributors and retailers worldwide.</p>
+              </div>
+            </article>
+            <article>
+              <span class="market-usp-icon" aria-hidden="true">
+                <img src="assets/icon-reliable-supply.png" alt="" />
+              </span>
+              <div>
+                <strong>Reliable Supply</strong>
+                <p>Consistent volumes and delivery schedules backed by a controlled Thai supply chain.</p>
+              </div>
+            </article>
           </div>
 
           <!--
@@ -103,7 +142,7 @@
             - ถ้าต้องการให้ประเทศใดเปิดไว้ตอนโหลดหน้า ให้ใส่ attribute open ที่ <details> เช่น <details ... open>
             - data-market ใช้เป็น slug ภาษาอังกฤษตัวเล็ก เช่น taiwan, france, japan เพื่อให้ CMS/analytics อ้างอิงได้
             - ถ้ามีข้อมูลร้าน ให้ใช้รูปแบบตารางในตัวอย่าง Taiwan/France/Austria/Russia
-            - ถ้ายังไม่มีข้อมูลร้าน ให้ใช้รูปแบบข้อความ + ปุ่ม CTA ในตัวอย่าง Netherlands/Spain/Japan
+            - คอลัมน์ตาราง: Retailer / Branch/location / Link
           -->
           <div class="market-retail-list">
           <!-- COUNTRY WITH RETAIL DATA: copy this pattern when a country has one or more retail locations. -->
@@ -115,43 +154,33 @@
               <div class="market-retail-table-wrap">
                 <table class="market-retail-table">
                   <colgroup>
-                    <col class="retail-col-city" />
                     <col class="retail-col-retailer" />
                     <col class="retail-col-branch" />
                     <col class="retail-col-link" />
-                    <col class="retail-col-availability" />
                   </colgroup>
                   <thead>
                     <tr>
-                      <th>City</th>
                       <th>Retailer</th>
-                      <th>Branch</th>
+                      <th>Branch/location</th>
                       <th>Link</th>
-                      <th>Availability</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- 1 ร้าน = 1 แถว <tr>. ลำดับคอลัมน์ต้องเป็น City / Retailer / Branch / Link / Availability เสมอ เพื่อให้ความกว้างคอลัมน์เท่ากันทุกตาราง -->
+                    <!-- 1 ร้าน = 1 แถว <tr>. ลำดับคอลัมน์ต้องเป็น Retailer / Branch/location / Link เสมอ -->
                     <tr>
-                      <td>Taipei</td>
                       <td>Breeze Super</td>
                       <td>Breeze Center Store</td>
                       <td><a href="https://maps.app.goo.gl/WPJiUdvAmk9X9S7a9" target="_blank" rel="noopener">Map</a></td>
-                      <td><span class="availability-pill">Seasonal</span></td>
                     </tr>
                     <tr>
-                      <td>Taipei</td>
                       <td>Fresh Mart</td>
                       <td>SOGO Zhongxiao Store</td>
                       <td><a href="https://maps.app.goo.gl/mVWm17cxRasgBYaU9" target="_blank" rel="noopener">Map</a></td>
-                      <td><span class="availability-pill">Seasonal</span></td>
                     </tr>
                     <tr>
-                      <td>Taipei</td>
                       <td>Beautiful Market</td>
                       <td>Shin Kong Mitsukoshi Xinyi A4</td>
                       <td><a href="https://maps.app.goo.gl/6ugQSNoQkxLcu2Rj9" target="_blank" rel="noopener">Map</a></td>
-                      <td><span class="availability-pill">Seasonal</span></td>
                     </tr>
                   </tbody>
                 </table>
@@ -168,42 +197,32 @@
               <div class="market-retail-table-wrap">
                 <table class="market-retail-table">
                   <colgroup>
-                    <col class="retail-col-city" />
                     <col class="retail-col-retailer" />
                     <col class="retail-col-branch" />
                     <col class="retail-col-link" />
-                    <col class="retail-col-availability" />
                   </colgroup>
                   <thead>
                     <tr>
-                      <th>City</th>
                       <th>Retailer</th>
-                      <th>Branch</th>
+                      <th>Branch/location</th>
                       <th>Link</th>
-                      <th>Availability</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Multiple</td>
                       <td>Paris Store</td>
-                      <td>-</td>
+                      <td>Available at Selected Stores</td>
                       <td><a href="https://paris-store.com/" target="_blank" rel="noopener">Website</a></td>
-                      <td><span class="availability-pill">Seasonal</span></td>
                     </tr>
                     <tr>
-                      <td>Multiple</td>
                       <td>Tang Freres</td>
-                      <td>-</td>
+                      <td>Available at Selected Stores</td>
                       <td><a href="https://www.tang-freres.fr/" target="_blank" rel="noopener">Website</a></td>
-                      <td><span class="availability-pill">Seasonal</span></td>
                     </tr>
                     <tr>
-                      <td>TBD</td>
                       <td>EXO Store</td>
-                      <td>-</td>
-                      <td><a href="https://www.facebook.com/pages/Exo-Store/149709892224719" target="_blank" rel="noopener">Page</a></td>
-                      <td><span class="availability-pill">Seasonal</span></td>
+                      <td>52 avenue de Choisy 75013 Paris, France</td>
+                      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=52+avenue+de+Choisy+75013+Paris+France" target="_blank" rel="noopener">Map</a></td>
                     </tr>
                   </tbody>
                 </table>
@@ -219,28 +238,22 @@
               <div class="market-retail-table-wrap">
                 <table class="market-retail-table">
                   <colgroup>
-                    <col class="retail-col-city" />
                     <col class="retail-col-retailer" />
                     <col class="retail-col-branch" />
                     <col class="retail-col-link" />
-                    <col class="retail-col-availability" />
                   </colgroup>
                   <thead>
                     <tr>
-                      <th>City</th>
                       <th>Retailer</th>
-                      <th>Branch</th>
+                      <th>Branch/location</th>
                       <th>Link</th>
-                      <th>Availability</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>-</td>
                       <td>BILLA PLUS</td>
-                      <td>Selected store</td>
+                      <td>Available at Selected Stores</td>
                       <td><a href="https://www.billa.at/unsere-maerkte/billa-plus" target="_blank" rel="noopener">Website</a></td>
-                      <td></td>
                     </tr>
                   </tbody>
                 </table>
@@ -256,97 +269,113 @@
               <div class="market-retail-table-wrap">
                 <table class="market-retail-table">
                   <colgroup>
-                    <col class="retail-col-city" />
                     <col class="retail-col-retailer" />
                     <col class="retail-col-branch" />
                     <col class="retail-col-link" />
-                    <col class="retail-col-availability" />
                   </colgroup>
                   <thead>
                     <tr>
-                      <th>City</th>
                       <th>Retailer</th>
-                      <th>Branch</th>
+                      <th>Branch/location</th>
                       <th>Link</th>
-                      <th>Availability</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>-</td>
                       <td>Tropical Queen</td>
-                      <td>-</td>
+                      <td>Urgush, Novosibirsk</td>
                       <td><a href="https://nsk.tropicalqueen.ru/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">Website</a></td>
-                      <td></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </details>
-
-          <!-- COUNTRY WITHOUT RETAIL DATA YET: use this pattern for "coming soon" countries. -->
-          <details class="market-retail-panel market-retail-panel-empty" data-market="netherlands">
-            <summary>
-              <span class="market-country-title">Netherlands</span>
-            </summary>
-            <div class="market-retail-content">
-              <p class="market-empty-copy">Retail locations will be announced soon. Please contact us for product availability in the Netherlands.</p>
-              <a class="pill-button" href="contact.html">Ask Where to Buy</a>
-            </div>
-          </details>
-
-          <!-- COUNTRY WITHOUT RETAIL DATA YET: update the CTA text/link when a real country page or contact flow is available. -->
-          <details class="market-retail-panel market-retail-panel-empty" data-market="spain">
-            <summary>
-              <span class="market-country-title">Spain</span>
-            </summary>
-            <div class="market-retail-content">
-              <p class="market-empty-copy">Our products are available through selected retail channels in Spain. Contact us to find the nearest point of sale.</p>
-              <a class="pill-button" href="contact.html">Find a Retail Location</a>
-            </div>
-          </details>
-
-          <details class="market-retail-panel market-retail-panel-empty" data-market="japan">
-            <summary>
-              <span class="market-country-title">Japan</span>
-            </summary>
-            <div class="market-retail-content">
-              <p class="market-empty-copy">Retail locations and seasonal product availability will be updated soon.</p>
-              <a class="pill-button" href="contact.html">Contact Us for Availability</a>
-            </div>
-          </details>
         </div>
+
+          <div class="market-more-markets" aria-labelledby="market-more-title">
+            <h3 id="market-more-title">Looking for Siam Fresh in another market?</h3>
+            <p class="where-to-buy-subtitle">Our products are supplied to additional international markets through private distribution arrangements. Contact us with your country, city, and product requirements for current availability.</p>
+            <a class="pill-button" href="contact.html">Check Availability</a>
+          </div>
         </div>
       </section>
 
       <section class="domestic-purchase-section" id="domestic-purchase" aria-labelledby="domestic-purchase-title">
         <div class="domestic-purchase-inner section-wrap">
           <div class="center-heading">
-            <h2 id="domestic-purchase-title">Domestic Purchase</h2>
+            <h2 id="domestic-purchase-title">Thailand Online Store</h2>
             <p class="where-to-buy-subtitle">Connect with Siam Fresh through our official social channels.</p>
           </div>
 
+          <div class="market-usp-strip domestic-usp-strip" aria-label="Thailand online store benefits">
+            <article>
+              <span class="market-usp-icon" aria-hidden="true">
+                <img src="assets/icon-premium-quality-best-seller.svg" alt="" />
+              </span>
+              <div>
+                <strong>Premium Quality</strong>
+                <p>Selected Thai fruits chosen for freshness and flavour.</p>
+              </div>
+            </article>
+            <article>
+              <span class="market-usp-icon" aria-hidden="true">
+                <img src="assets/icon-carefully-packed.png" alt="" />
+              </span>
+              <div>
+                <strong>Carefully Packed</strong>
+                <p>Packed with care to protect quality in transit.</p>
+              </div>
+            </article>
+            <article>
+              <span class="market-usp-icon" aria-hidden="true">
+                <img src="assets/icon-reliable-delivery.png" alt="" />
+              </span>
+              <div>
+                <strong>Reliable Delivery</strong>
+                <p>Delivered to your door across Thailand.</p>
+              </div>
+            </article>
+            <article>
+              <span class="market-usp-icon" aria-hidden="true">
+                <img src="assets/icon-easy-online-ordering.png" alt="" />
+              </span>
+              <div>
+                <strong>Easy Online Ordering</strong>
+                <p>Order easily via Facebook, Instagram, or LINE.</p>
+              </div>
+            </article>
+          </div>
+
           <!--
-            CMS GUIDE: Domestic Purchase social links
+            CMS GUIDE: Thailand Online Store social links
             - แก้ลิงก์แต่ละช่องทางที่ href="..."
             - แก้ชื่อช่องทางที่ <span>Facebook</span>, <span>Instagram</span>, <span>LINE</span>
             - ถ้าเพิ่มช่องทางใหม่ ให้ copy <a class="domestic-social-link">...</a> 1 ชุด แล้วเปลี่ยน icon/link/text
             - ใช้ target="_blank" rel="noopener" สำหรับลิงก์ออกนอกเว็บเสมอ
+            - ภาพประกอบ: assets/img-all.png
           -->
-          <div class="domestic-social-links" aria-label="Connect With Us">
-            <a class="domestic-social-link" href="https://www.facebook.com/siamfresh.th?locale=th_TH" target="_blank" rel="noopener" aria-label="Connect with Siam Fresh on Facebook">
-              <img src="assets/social-facebook.png" alt="" aria-hidden="true" />
-              <span>Facebook</span>
-            </a>
-            <a class="domestic-social-link" href="https://www.instagram.com/siamfresh.th/" target="_blank" rel="noopener" aria-label="Connect with Siam Fresh on Instagram">
-              <img src="assets/social-instagram.png" alt="" aria-hidden="true" />
-              <span>Instagram</span>
-            </a>
-            <a class="domestic-social-link" href="https://page.line.me/lqp8861i?oat_content=url&amp;openQrModal=true" target="_blank" rel="noopener" aria-label="Connect with Siam Fresh on LINE">
-              <img src="assets/social-line.png" alt="" aria-hidden="true" />
-              <span>LINE</span>
-            </a>
+          <div class="domestic-social-block">
+            <figure class="domestic-social-media">
+              <img src="assets/img-allfruits2.png" alt="Order Siam Fresh premium Thai fruits online" loading="lazy" />
+            </figure>
+            <div class="domestic-social-side">
+              <p class="domestic-social-lead">You can order online through the following channels:</p>
+              <div class="domestic-social-links" aria-label="Connect With Us">
+                <a class="domestic-social-link" href="https://www.facebook.com/siamfresh.th?locale=th_TH" target="_blank" rel="noopener" aria-label="Connect with Siam Fresh on Facebook">
+                  <img src="assets/social-facebook.png" alt="" aria-hidden="true" />
+                  <span>Facebook</span>
+                </a>
+                <a class="domestic-social-link" href="https://www.instagram.com/siamfresh.th/" target="_blank" rel="noopener" aria-label="Connect with Siam Fresh on Instagram">
+                  <img src="assets/social-instagram.png" alt="" aria-hidden="true" />
+                  <span>Instagram</span>
+                </a>
+                <a class="domestic-social-link" href="https://page.line.me/lqp8861i?oat_content=url&amp;openQrModal=true" target="_blank" rel="noopener" aria-label="Connect with Siam Fresh on LINE">
+                  <img src="assets/social-line.png" alt="" aria-hidden="true" />
+                  <span>LINE</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

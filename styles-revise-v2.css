@@ -7606,8 +7606,45 @@ html:has(body.fruit-page) {
   margin-bottom: 34px;
 }
 
+#more-vegetables .center-heading {
+  margin-bottom: 48px;
+}
+
 #more-vegetables .center-heading h2 {
-  margin-bottom: 32px;
+  margin-bottom: 0;
+}
+
+#more-vegetables .center-heading .about-intro-highlight {
+  width: max-content;
+  max-width: 100%;
+  margin: 14px auto 0;
+  color: var(--green);
+  font-family: var(--font-main);
+  font-size: clamp(16px, 1.35vw, 18px);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+#more-vegetables .center-heading .about-intro-highlight-line {
+  display: block;
+  line-height: 1.55;
+  white-space: nowrap;
+}
+
+#more-vegetables .center-heading p:not(.about-intro-highlight) {
+  max-width: none;
+  width: max-content;
+  max-width: 100%;
+  margin: 12px auto 0;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  #more-vegetables .center-heading .about-intro-highlight-line,
+  #more-vegetables .center-heading p:not(.about-intro-highlight) {
+    white-space: normal;
+  }
 }
 
 .fruit-grid-section .center-heading .section-label,
@@ -7659,6 +7696,80 @@ html:has(body.fruit-page) {
   color: var(--muted);
   font-size: 15px;
   line-height: 1.65;
+}
+
+.fruit-product-cta-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: #f8fcf6;
+  border-color: rgba(34, 135, 96, 0.12);
+}
+
+.fruit-product-cta-inner {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 28px 22px 24px;
+  text-align: center;
+}
+
+.fruit-product-cta-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+}
+
+.fruit-product-cta-icon img {
+  width: 48px;
+  height: 48px;
+  aspect-ratio: auto;
+  object-fit: contain;
+  background: transparent;
+}
+
+.fruit-product-cta-card h3 {
+  margin: 0;
+  color: var(--green);
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.fruit-product-cta-card p {
+  margin: 0;
+  max-width: 260px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.fruit-product-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 46px;
+  margin-top: 8px;
+  padding: 0 18px;
+  border-radius: var(--button-radius);
+  background: var(--green);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.fruit-product-cta-button:hover,
+.fruit-product-cta-button:focus-visible {
+  background: linear-gradient(135deg, var(--green), var(--green-2));
+  color: #fff;
+  transform: translateY(-1px);
 }
 
 .fruit-packing-cta {
@@ -7847,18 +7958,20 @@ html:has(body.fruit-page) {
 
 .international-partners-page .where-to-buy-section {
   margin-top: 0;
+  background: #fff;
+}
+
+.international-partners-page .where-to-buy-section::after {
+  display: none;
 }
 
 .where-to-buy-section .center-heading {
-  margin-bottom: 20px;
-}
-
-.where-to-buy-section .center-heading {
+  display: grid;
+  gap: 20px;
   max-width: 100%;
   margin-right: auto;
   margin-left: auto;
-  display: grid;
-  gap: 8px;
+  margin-bottom: 40px;
 }
 
 .where-to-buy-section h2 {
@@ -7870,12 +7983,117 @@ html:has(body.fruit-page) {
 }
 
 .where-to-buy-subtitle {
-  margin: 0;
+  max-width: 1040px;
+  width: 100%;
+  margin: 0 auto;
   color: var(--green);
-  font-size: clamp(17px, 1.55vw, 21px);
-  font-weight: 600;
-  line-height: 1.45;
+  font-size: clamp(13px, 1.15vw, 15px);
+  font-weight: 500;
+  line-height: 1.6;
   text-align: center;
+}
+
+.market-usp-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  width: min(100%, 1040px);
+  margin: 8px auto 36px;
+  padding: 18px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.market-usp-strip article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 4px 16px;
+  border-right: 1px solid rgba(34, 135, 96, 0.12);
+  text-align: center;
+}
+
+.market-usp-strip article:last-child {
+  border-right: 0;
+}
+
+.market-usp-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.market-usp-icon img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+.market-usp-strip strong {
+  display: block;
+  color: var(--green);
+  font-family: var(--font-main);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.market-usp-strip p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-family: var(--font-main);
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@media (max-width: 1100px) {
+  .market-usp-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 18px;
+    padding: 22px 12px;
+  }
+
+  .market-usp-strip article:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .market-usp-strip article:nth-child(-n + 2) {
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(34, 135, 96, 0.12);
+  }
+}
+
+@media (max-width: 640px) {
+  .market-usp-strip {
+    grid-template-columns: 1fr;
+    margin-bottom: 28px;
+    padding: 18px 14px;
+  }
+
+  .market-usp-strip article {
+    padding: 12px 4px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(34, 135, 96, 0.12);
+  }
+
+  .market-usp-strip article:nth-child(-n + 2) {
+    padding-bottom: 12px;
+  }
+
+  .market-usp-strip article:last-child {
+    padding-bottom: 4px;
+    border-bottom: 0;
+  }
 }
 
 .where-to-buy-section .center-heading p.where-to-buy-highlight {
@@ -7893,21 +8111,74 @@ html:has(body.fruit-page) {
 
 .market-retail-list {
   display: grid;
-  gap: 0;
+  gap: 12px;
   width: min(100%, 1040px);
   min-width: 0;
   margin-right: auto;
   margin-left: auto;
 }
 
+.market-more-markets {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  width: min(100%, 1040px);
+  margin: 36px auto 0;
+  padding: 48px 28px;
+  border: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(12, 56, 24, 0.38), rgba(34, 135, 96, 0.12)),
+    url("assets/footer-ci-bg.jpg?v=4") center / cover no-repeat,
+    var(--green);
+  text-align: center;
+}
+
+.market-more-markets h3 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.market-more-markets .where-to-buy-subtitle {
+  max-width: 860px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.market-more-markets .pill-button {
+  margin-top: 4px;
+  min-height: 46px;
+  padding: 0 28px;
+}
+
 .market-retail-panel {
   min-width: 0;
   padding: 0;
-  border: 0;
-  border-bottom: 1px solid rgba(34, 135, 96, 0.14);
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+  border: 1.5px solid rgba(34, 135, 96, 0.34);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(12, 56, 24, 0.045);
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.market-retail-panel:hover {
+  border-color: var(--green);
+  box-shadow: 0 4px 14px rgba(12, 56, 24, 0.08);
+}
+
+.market-retail-panel[open] {
+  border-color: var(--green);
+  background: rgba(241, 251, 239, 0.45);
+  box-shadow: 0 2px 8px rgba(12, 56, 24, 0.045);
+}
+
+.market-retail-panel[open]:hover {
+  border-color: var(--green);
 }
 
 .market-retail-panel summary {
@@ -7915,9 +8186,15 @@ html:has(body.fruit-page) {
   display: grid;
   gap: 6px;
   min-width: 0;
-  padding: 18px 54px 18px 0;
+  padding: 18px 58px 18px 20px;
   cursor: pointer;
   list-style: none;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.market-retail-panel summary:hover {
+  background: rgba(117, 229, 69, 0.06);
 }
 
 .market-retail-panel summary::-webkit-details-marker {
@@ -7928,30 +8205,43 @@ html:has(body.fruit-page) {
   content: "";
   position: absolute;
   top: 50%;
-  right: 0;
-  width: 26px;
-  height: 26px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
   border: 0;
   border-radius: 999px;
-  background: url("assets/add.svg") center / 18px 18px no-repeat;
+  background-color: var(--green-2);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M12 5v14M5 12h14' stroke='%230c3818' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-position: center;
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  box-shadow: 0 2px 8px rgba(12, 56, 24, 0.12);
   transform: translateY(-50%);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.market-retail-panel summary:hover::after {
+  background-color: #86ef5a;
+  transform: translateY(-50%) scale(1.06);
 }
 
 .market-retail-panel[open] summary::after {
-  background-image: url("assets/minus-sign.svg");
-}
-
-.market-retail-panel summary:hover .market-country-title {
-  color: var(--green-2);
+  background-color: var(--green-2);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M5 12h14' stroke='%230c3818' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 .market-country-title {
   min-width: 0;
   color: var(--green);
-  font-size: clamp(21px, 2.1vw, 28px);
+  font-size: clamp(17px, 1.5vw, 21px);
   font-weight: 700;
-  line-height: 1.18;
+  line-height: 1.2;
   overflow-wrap: anywhere;
+  transition: color 0.2s ease;
+}
+
+.market-retail-panel summary:hover .market-country-title {
+  color: var(--green-3);
 }
 
 .market-country-copy,
@@ -7965,7 +8255,7 @@ html:has(body.fruit-page) {
 
 .market-retail-content {
   min-width: 0;
-  padding: 0 0 22px;
+  padding: 0 20px 20px;
 }
 
 .market-empty-copy {
@@ -7976,38 +8266,30 @@ html:has(body.fruit-page) {
   max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  border: 1px solid rgba(34, 135, 96, 0.14);
+  border: 1px solid rgba(34, 135, 96, 0.16);
   border-radius: 12px;
   background: #fff;
-  box-shadow: 0 10px 24px rgba(12, 56, 24, 0.06);
+  box-shadow: none;
 }
 
 .market-retail-table {
   width: 100%;
-  min-width: 760px;
+  min-width: 560px;
   border-collapse: collapse;
   table-layout: fixed;
   background: #fff;
 }
 
-.retail-col-city {
-  width: 15%;
-}
-
 .retail-col-retailer {
-  width: 24%;
+  width: 34%;
 }
 
 .retail-col-branch {
-  width: 31%;
+  width: 48%;
 }
 
 .retail-col-link {
-  width: 14%;
-}
-
-.retail-col-availability {
-  width: 16%;
+  width: 18%;
 }
 
 .market-retail-table th,
@@ -8030,10 +8312,9 @@ html:has(body.fruit-page) {
   text-transform: none;
 }
 
-.market-retail-table th:nth-child(5) {
+.market-retail-table th:last-child {
   background: var(--green-2);
   color: var(--green-3);
-  text-align: right;
 }
 
 .market-retail-table td {
@@ -8045,13 +8326,13 @@ html:has(body.fruit-page) {
   background: #f7faf7;
 }
 
-.market-retail-table td:nth-child(2) {
+.market-retail-table td:first-child {
   color: var(--green);
   font-weight: 800;
 }
 
 .market-retail-table td:last-child {
-  text-align: right;
+  text-align: left;
 }
 
 .market-retail-table tbody tr:last-child td {
@@ -8068,20 +8349,6 @@ html:has(body.fruit-page) {
   color: var(--green-2);
 }
 
-.availability-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 26px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(117, 229, 69, 0.16);
-  color: var(--green);
-  font-size: 12px;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
 .market-retail-panel-empty .pill-button {
   min-height: 42px;
   padding: 12px 18px;
@@ -8091,19 +8358,46 @@ html:has(body.fruit-page) {
 
 .domestic-purchase-section {
   position: relative;
+  overflow: hidden;
   margin-top: 0;
   margin-bottom: 0;
   padding: clamp(46px, 6vw, 76px) 0;
   border-top: 0;
   border-bottom: 0;
-  background:
-    linear-gradient(90deg, rgba(12, 56, 24, 0.38), rgba(34, 135, 96, 0.12)),
-    url("assets/footer-ci-bg.jpg?v=4") center / cover no-repeat,
-    var(--green);
+  background: #f7faf7;
   scroll-margin-top: 110px;
 }
 
+.domestic-purchase-section::before,
+.domestic-purchase-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.domestic-purchase-section::before {
+  top: auto;
+  right: -6%;
+  bottom: -28%;
+  width: min(42vw, 420px);
+  height: min(42vw, 420px);
+  background: radial-gradient(circle, rgba(117, 229, 69, 0.28) 0%, rgba(117, 229, 69, 0.1) 42%, transparent 72%);
+}
+
+.domestic-purchase-section::after {
+  top: -10%;
+  bottom: auto;
+  left: -18%;
+  width: min(48vw, 480px);
+  height: min(48vw, 480px);
+  background: radial-gradient(circle, rgba(34, 135, 96, 0.16) 0%, rgba(34, 135, 96, 0.06) 46%, transparent 74%);
+}
+
 .domestic-purchase-inner {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: 2px;
 }
@@ -8111,39 +8405,75 @@ html:has(body.fruit-page) {
 .domestic-purchase-section .center-heading {
   display: grid;
   gap: 14px;
-  margin-bottom: 34px;
+  margin-bottom: 16px;
 }
 
 .domestic-purchase-section h2 {
   margin: 0;
-  color: #fff;
+  color: var(--ink);
   font-size: clamp(28px, 2.7vw, 40px);
   line-height: var(--section-heading-line);
 }
 
 .domestic-purchase-section .where-to-buy-subtitle {
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--green);
+}
+
+.domestic-usp-strip {
+  margin: 0 auto 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.domestic-social-block {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(230px, 0.75fr);
+  gap: clamp(12px, 2vw, 24px);
+  align-items: center;
+  width: min(100%, 1060px);
+  margin: 0 auto;
+}
+
+.domestic-social-side {
+  display: grid;
+  gap: 18px;
+  justify-items: stretch;
+  width: 100%;
+  max-width: 320px;
+  margin: 0;
+}
+
+.domestic-social-lead {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(15px, 1.35vw, 17px);
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: left;
 }
 
 .domestic-social-links {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  flex-wrap: nowrap;
   justify-content: center;
+  align-items: stretch;
   gap: 14px;
-  width: min(100%, 720px);
-  margin: 0 auto;
-  padding-top: 4px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-top: 0;
 }
 
 .domestic-social-link {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
-  width: 190px;
+  width: 100%;
   min-height: 52px;
   padding: 10px 18px 10px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(34, 135, 96, 0.16);
   border-radius: 999px;
   background: #fff;
   color: var(--green);
@@ -8166,6 +8496,48 @@ html:has(body.fruit-page) {
   width: 34px;
   height: 34px;
   object-fit: contain;
+}
+
+.domestic-social-media {
+  margin: 0;
+  overflow: visible;
+  border-radius: 0;
+  background: transparent;
+}
+
+.domestic-social-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .domestic-social-block {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    justify-items: center;
+  }
+
+  .domestic-social-side {
+    max-width: 320px;
+    margin: 0 auto;
+    justify-items: center;
+  }
+
+  .domestic-social-lead {
+    text-align: center;
+  }
+
+  .domestic-social-links {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .domestic-social-media {
+    width: min(100%, 620px);
+    order: 0;
+  }
 }
 
 @media (max-width: 720px) {
@@ -8200,11 +8572,11 @@ html:has(body.fruit-page) {
   }
 
   .where-to-buy-subtitle {
-    font-size: 16px;
+    font-size: 13px;
   }
 
   .market-retail-panel summary {
-    padding: 16px 42px 16px 0;
+    padding: 16px 48px 16px 16px;
   }
 
   .market-country-copy,
@@ -8227,12 +8599,12 @@ html:has(body.fruit-page) {
     border: 1px solid rgba(34, 135, 96, 0.14);
     border-radius: 12px;
     background: #fff;
-    box-shadow: 0 10px 24px rgba(12, 56, 24, 0.06);
+    box-shadow: none;
   }
 
   .market-retail-table {
     display: table;
-    min-width: 720px;
+    min-width: 520px;
     background: #fff;
   }
 
@@ -8261,15 +8633,15 @@ html:has(body.fruit-page) {
   }
 
   .domestic-social-links {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     max-width: 320px;
-    justify-items: center;
+    justify-items: stretch;
   }
 
   .domestic-social-link {
-    justify-self: center;
-    justify-content: center;
+    justify-content: flex-start;
+    width: 100%;
   }
 }
 
