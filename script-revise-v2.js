@@ -79,7 +79,48 @@ const mainNav = document.querySelector(".main-nav");
 
 if (siteHeader && mainNav) {
   const navMq = window.matchMedia("(max-width: 1100px)");
-  const navDropdowns = [...mainNav.querySelectorAll(".nav-dropdown")];
+  const navDrawerLinks = document.createElement("div");
+  navDrawerLinks.className = "nav-drawer-links";
+
+  while (mainNav.firstChild) {
+    navDrawerLinks.appendChild(mainNav.firstChild);
+  }
+
+  const navDropdowns = [...navDrawerLinks.querySelectorAll(".nav-dropdown")];
+
+  const navBackdrop = document.createElement("button");
+  navBackdrop.className = "nav-backdrop";
+  navBackdrop.type = "button";
+  navBackdrop.setAttribute("aria-label", "Close menu");
+  navBackdrop.setAttribute("aria-hidden", "true");
+  navBackdrop.tabIndex = -1;
+
+  const navClose = document.createElement("button");
+  navClose.className = "nav-drawer-close";
+  navClose.type = "button";
+  navClose.setAttribute("aria-label", "Close menu");
+  navClose.innerHTML = `<img src="assets/icon-close.svg" alt="" aria-hidden="true" />`;
+
+  const navDrawerFooter = document.createElement("div");
+  navDrawerFooter.className = "nav-drawer-footer";
+
+  const headerActions = siteHeader.querySelector(".header-actions");
+  const languageButton = headerActions?.querySelector(".language");
+  const registerLink = headerActions?.querySelector(".register-link");
+
+  if (languageButton) {
+    navDrawerFooter.appendChild(languageButton.cloneNode(true));
+  }
+
+  if (registerLink) {
+    const signupButton = registerLink.cloneNode(true);
+    signupButton.classList.add("nav-drawer-signup");
+    navDrawerFooter.appendChild(signupButton);
+  }
+
+  mainNav.append(navClose, navDrawerLinks, navDrawerFooter);
+  document.body.appendChild(navBackdrop);
+
   const navToggle = document.createElement("button");
   navToggle.className = "nav-toggle";
   navToggle.type = "button";
@@ -94,18 +135,44 @@ if (siteHeader && mainNav) {
     <img class="nav-toggle-icon nav-toggle-icon-close" src="assets/icon-close.svg" alt="" aria-hidden="true" />
   `;
 
-  const headerActions = siteHeader.querySelector(".header-actions");
+  const navInsertPoint = headerActions;
+
   if (headerActions) {
-    headerActions.before(navToggle);
+    headerActions.after(navToggle);
   } else {
     siteHeader.appendChild(navToggle);
   }
+
+  const syncNavPlacement = () => {
+    if (navMq.matches) {
+      mainNav.classList.add("is-mobile-drawer");
+      if (mainNav.parentElement !== document.body) {
+        document.body.appendChild(mainNav);
+      }
+      return;
+    }
+
+    mainNav.classList.remove("is-mobile-drawer");
+    if (mainNav.parentElement !== siteHeader) {
+      if (headerActions) {
+        siteHeader.insertBefore(mainNav, headerActions);
+      } else if (navInsertPoint) {
+        siteHeader.insertBefore(mainNav, navInsertPoint);
+      } else {
+        siteHeader.appendChild(mainNav);
+      }
+    }
+  };
+
+  syncNavPlacement();
 
   const setNavOpen = (isOpen) => {
     siteHeader.classList.toggle("is-nav-open", isOpen);
     document.body.classList.toggle("is-nav-open", isOpen);
     navToggle.setAttribute("aria-expanded", String(isOpen));
     navToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    navBackdrop.setAttribute("aria-hidden", String(!isOpen));
+    navBackdrop.tabIndex = isOpen ? 0 : -1;
     if (!isOpen) {
       navDropdowns.forEach((dropdown) => {
         dropdown.classList.remove("is-submenu-open");
@@ -117,6 +184,15 @@ if (siteHeader && mainNav) {
   navToggle.addEventListener("click", (event) => {
     event.stopPropagation();
     setNavOpen(!siteHeader.classList.contains("is-nav-open"));
+  });
+
+  navClose.addEventListener("click", (event) => {
+    event.stopPropagation();
+    setNavOpen(false);
+  });
+
+  navBackdrop.addEventListener("click", () => {
+    setNavOpen(false);
   });
 
   navDropdowns.forEach((dropdown) => {
@@ -150,20 +226,16 @@ if (siteHeader && mainNav) {
     }
   });
 
-  document.addEventListener("click", (event) => {
-    if (!navMq.matches || !siteHeader.classList.contains("is-nav-open")) return;
-    if (!siteHeader.contains(event.target)) {
-      setNavOpen(false);
-    }
-  });
-
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       setNavOpen(false);
     }
   });
 
-  navMq.addEventListener("change", () => setNavOpen(false));
+  navMq.addEventListener("change", () => {
+    setNavOpen(false);
+    syncNavPlacement();
+  });
 }
 
 const reviseHeroSlides = document.querySelectorAll(".revise-hero-media img");
